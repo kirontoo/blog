@@ -75,7 +75,7 @@ sectionPagesMenu = "main"
     readOtherPosts = "Read other posts"
 
     [languages.en.params.logo]
-      logoText = "[kironto]: $"
+      logoText = "[kironto] $"
       logoHomeLink = "/"
 
     [languages.en.menu]
@@ -108,7 +108,6 @@ sectionPagesMenu = "main"
 category = "categories"
 tag = "tags"
 series = "series"
-
 
 # For hugo >= 0.60.0, enable inline HTML
 [markup.goldmark.renderer]
