@@ -19,11 +19,14 @@ sending back.
 ```typescript
 import { createEventDispatcher } from 'svelte';
 
-// dispatches an event
+// declare a event dispatcher
 const dispatch = createEventDispatcher();
+
+// dispatch an event
+dispatch('event-name', eventData);
 ```
 
-{{<code language="tsx" title="Counter.svete">}}
+{{<code language="svelte" title="Counter.svete">}}
 <script lang="ts">
   import { createEventDispatcher } from 'svelte';
 
@@ -45,7 +48,7 @@ const dispatch = createEventDispatcher();
 <button on:click={increment}>Increment</button>
 {{</code>}}
 
-{{<code language="tsx" title="App.svelte">}}
+{{<code language="svelte" title="App.svelte">}}
 <script lang="ts">
   import Counter from './Counter.svelte'
 

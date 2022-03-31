@@ -23,7 +23,7 @@ git clean -fdx
 ---
 
 
-!Use with Caution!
+**!Use with Caution!**
 
 This command will delete files that you haven't thought of. Be careful whenever
 running a command with `-f`

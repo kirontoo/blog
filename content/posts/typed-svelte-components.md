@@ -10,7 +10,7 @@ description = "How to set up typed props for svelte components with typescript."
 showFullContent = false
 readingTime = false
 hideComments = false
-draft = false
+draft = true
 +++
 
 How to set up typed props for svelte components.

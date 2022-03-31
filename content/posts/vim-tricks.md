@@ -56,7 +56,7 @@ when you run this keymap, it will pipe the contents of the `.js` file into
 your current buffer
 
 ## Sorting
-highlight the lines you want to sort, then run the command: `:sort`
+Highlight the lines you want to sort, then run the command: `:sort`
 
 **Example**:
 ```javascript
@@ -118,9 +118,9 @@ my current buffer is in using:
 
 ### Hiding Windows
 ```vim
-noremap <leader>hh <C-w>h:hide<CR>|	" hide the left window
-noremap <leader>hj <C-w>j:hide<CR>|	" hide the bottom window
-noremap <leader>hk <C-w>k:hide<CR>|	" hide the top window
-noremap <leader>hl <C-w>l:hide<CR>|	" hide the right window
+noremap <leader>hh <C-w>h:hide<CR>	" hide the left window
+noremap <leader>hj <C-w>j:hide<CR>	" hide the bottom window
+noremap <leader>hk <C-w>k:hide<CR>	" hide the top window
+noremap <leader>hl <C-w>l:hide<CR>	" hide the right window
 ```
 
