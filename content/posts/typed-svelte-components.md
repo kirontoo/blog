@@ -24,10 +24,10 @@ Given a Button svelte component.
 {{< code language="tsx" title="Buttons.svelte" id="1" expand="Show" collapse="Hide" isCollapsed="false" >}}
 <script lang="ts">
     export let disabled: boolean = false;
-    export let kind: "primary" 
-        | "danger" 
-        | "secondary" 
-        | "ghost" 
+    export let kind: "primary"
+        | "danger"
+        | "secondary"
+        | "ghost"
         | "outline"  = "primary";
     export let size: "sm" | "md" | "lg" = "md";
     export let type: string = "button";
@@ -54,7 +54,7 @@ Given a Button svelte component.
 </button>
 {{< /code >}}
 
-{{<code language="typescript" title="Button.svelte.d.ts" id="2" expand="Show" collapse="Hide" isCollapsed="false">}}
+{{<code language="typescript" title="Button.svelte.d.ts">}}
 import { SvelteComponentTyped } from "svelte";
 
 export interface ButtonProps
@@ -70,13 +70,13 @@ export default class Button extends SvelteComponentTyped< ButtonProps> {};
 
 ## Typed Components with Custom Events
 
-{{<code language="tsx" title="Button.svelte" id="2" expand="Show" collapse="Hide" isCollapsed="false">}}
+{{<code language="tsx" title="Button.svelte">}}
 <script lang="ts">
     // ....code
-    
+
     import { createEventDispatcher } from 'svelte';
     const dispatch = createEventDispatcher();
-    
+
     const example: ExampleType = {
         name: 'hello'
     };
@@ -97,7 +97,7 @@ export default class Button extends SvelteComponentTyped< ButtonProps> {};
 </button>
 {{< /code >}}
 
-{{<code language="typescript" title="Button.svelte.d.ts" id="2" expand="Show" collapse="Hide" isCollapsed="false">}}
+{{<code language="typescript" title="Button.svelte.d.ts">}}
 import { SvelteComponentTyped } from "svelte";
 
 export interface ExampleType {
@@ -106,12 +106,12 @@ export interface ExampleType {
 
 // ...ButtonProps code here...
 
-export default class Button extends SvelteComponentTyped< 
+export default class Button extends SvelteComponentTyped<
     ButtonProps,
     {
-        // click:custom-click: your custom event     
+        // click:custom-click: your custom event
         // ExampleType: the type of the data sent
-        ["click:custom-click"]: ExampleType 
+        ["click:custom-click"]: ExampleType
     }
 > {};
 {{< /code >}}
@@ -120,7 +120,7 @@ Outer Component
 
 
 
-{{<code language="tsx" title="Outer.svelte" id="2" expand="Show" collapse="Hide" isCollapsed="false">}}
+{{<code language="tsx" title="Outer.svelte">}}
 <script lang="ts">
     import Button from "./Button.svelte";
 </script>
