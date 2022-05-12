@@ -1,4 +1,4 @@
-baseURL = "https://kirontoo.github.io"
+baseURL = "https://kirontoo.github.io/blog/"
 theme = "risotto"
 title = "kironto"
 author = "Amy Dange"
