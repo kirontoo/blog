@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kironto</title>
+    <link>https://kirontoo.github.io/</link>
+    <description>Recent content on kironto</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2022 Amy Dang</copyright>
+    <lastBuildDate>Wed, 30 Mar 2022 14:16:28 -0700</lastBuildDate><atom:link href="https://kirontoo.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hello World.</title>
+      <link>https://kirontoo.github.io/whoami/</link>
+      <pubDate>Wed, 30 Mar 2022 11:04:29 -0700</pubDate>
+      
+      <guid>https://kirontoo.github.io/whoami/</guid>
+      <description>Hey there.</description>
+    </item>
+    
+    <item>
+      <title>Git: Removing Untracked Files</title>
+      <link>https://kirontoo.github.io/posts/remove-untracked-files/</link>
+      <pubDate>Mon, 21 Mar 2022 10:23:29 -0700</pubDate>
+      
+      <guid>https://kirontoo.github.io/posts/remove-untracked-files/</guid>
+      <description>git clean -fdx -f - force
+-d - include directories
+-x - include ignored files
+ !Use with Caution!
+This command will delete files that you haven&amp;rsquo;t thought of. Be careful whenever running a command with -f</description>
+    </item>
+    
+    <item>
+      <title>Useful Vim Tricks</title>
+      <link>https://kirontoo.github.io/posts/vim-tricks/</link>
+      <pubDate>Sat, 21 Nov 2020 19:33:51 -0800</pubDate>
+      
+      <guid>https://kirontoo.github.io/posts/vim-tricks/</guid>
+      <description>Append Output Of A External Command To Your Buffer The :read command can insert a file or the output of an external program into the current buffer. To run a program just prefix the shell command with !.
+Example:
+:read !echo &amp;#34;hello&amp;#34; You can also specify the line you want to output to. Just prefix read with a number and it will output to that line. Example:
+:12read !echo &amp;#34;hello&amp;#34;To output to a certain number of lines before your current line, prefix with - number of lines.</description>
+    </item>
+    
+  </channel>
+</rss>

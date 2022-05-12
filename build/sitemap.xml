@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://kirontoo.github.io/</loc>
+    <lastmod>2022-03-30T14:16:28-07:00</lastmod>
+  </url><url>
+    <loc>https://kirontoo.github.io/whoami/</loc>
+    <lastmod>2022-03-30T11:04:29-07:00</lastmod>
+  </url><url>
+    <loc>https://kirontoo.github.io/tags/git/</loc>
+    <lastmod>2022-03-21T10:23:29-07:00</lastmod>
+  </url><url>
+    <loc>https://kirontoo.github.io/posts/remove-untracked-files/</loc>
+    <lastmod>2022-03-21T10:23:29-07:00</lastmod>
+  </url><url>
+    <loc>https://kirontoo.github.io/posts/</loc>
+    <lastmod>2022-03-21T10:23:29-07:00</lastmod>
+  </url><url>
+    <loc>https://kirontoo.github.io/tags/</loc>
+    <lastmod>2022-03-21T10:23:29-07:00</lastmod>
+  </url><url>
+    <loc>https://kirontoo.github.io/tags/tips/</loc>
+    <lastmod>2022-03-21T10:23:29-07:00</lastmod>
+  </url><url>
+    <loc>https://kirontoo.github.io/posts/vim-tricks/</loc>
+    <lastmod>2020-11-21T19:33:51-08:00</lastmod>
+  </url><url>
+    <loc>https://kirontoo.github.io/tags/vim/</loc>
+    <lastmod>2020-11-21T19:33:51-08:00</lastmod>
+  </url><url>
+    <loc>https://kirontoo.github.io/categories/</loc>
+  </url><url>
+    <loc>https://kirontoo.github.io/series/</loc>
+  </url>
+</urlset>
