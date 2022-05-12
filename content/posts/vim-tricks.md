@@ -106,12 +106,12 @@ to do this you can make vim open and read file, then pipe it into your current b
 You can create a snippets folder that holds all of your snippets or boilerplate.
 Using these files, I can generate the files I want by combining commands in VIM.
 
-Example: I have a snippet file called `test.txt.` In this file, I have some boilerplate for a
+Example: I have a snippet file called `test.js.` In this file, I have some boilerplate for a
 test file for a nodejs project. In any given project, I can generate a new test file in the same directory as
 my current buffer is in using:
 
 ```vim
-:e %:h/mytest.test.js | read /path/to/snippet/test.txt
+:e %:h/mytest.test.js | read /path/to/snippet/test.js
 ```
 
 ## Windows

@@ -10,6 +10,7 @@ description = "A quick guide to setting up custom event listeners in svelte."
 showFullContent = false
 readingTime = false
 hideComments = false
+draft = true
 +++
 
 Using `createEventDispatcher`, you can create a custom event dispatcher to dispatch _component events_.
@@ -26,43 +27,43 @@ const dispatch = createEventDispatcher();
 dispatch('event-name', eventData);
 ```
 
-{{<code language="svelte" title="Counter.svete">}}
-<script lang="ts">
-  import { createEventDispatcher } from 'svelte';
+%% {{<code language="svelte" title="Counter.svete">}}
+%% <script lang="ts">
+%%   import { createEventDispatcher } from 'svelte';
 
-  const dispatch = createEventDispatcher();
-  export let finalCount: number = 10;
-  export let count: number = 0
+%%   const dispatch = createEventDispatcher();
+%%   export let finalCount: number = 10;
+%%   export let count: number = 0
 
-  const increment = () => {
-    count += 1;
+%%   const increment = () => {
+%%     count += 1;
 
-    if( count === finalCount ) {
-      dispatch('message', {
-        text: `Reached final count: ${finalCount}`
-      });
-    }
-  }
-</script>
+%%     if( count === finalCount ) {
+%%       dispatch('message', {
+%%         text: `Reached final count: ${finalCount}`
+%%       });
+%%     }
+%%   }
+%% </script>
 
-<button on:click={increment}>Increment</button>
-{{</code>}}
+%% <button on:click={increment}>Increment</button>
+%% {{</code>}}
 
-{{<code language="svelte" title="App.svelte">}}
-<script lang="ts">
-  import Counter from './Counter.svelte'
+%% {{<code language="svelte" title="App.svelte">}}
+%% <script lang="ts">
+%%   import Counter from './Counter.svelte'
 
-  let count = 0;
-  function handleMessage(e: CustomEvent<{text: string}>) {
-      alert(e.detail.text);
-  }
-</script>
+%%   let count = 0;
+%%   function handleMessage(e: CustomEvent<{text: string}>) {
+%%       alert(e.detail.text);
+%%   }
+%% </script>
 
-<main>
-  <p>Current counter: {count}</p>
-  <Counter
-    bind:count
-    on:message={handleMessage}
-    finalCount={15}/>
-</main>
-{{</code>}}
+%% <main>
+%%   <p>Current counter: {count}</p>
+%%   <Counter
+%%     bind:count
+%%     on:message={handleMessage}
+%%     finalCount={15}/>
+%% </main>
+%% {{</code>}}
