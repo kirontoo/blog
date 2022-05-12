@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>vim on kironto</title>
-    <link>https://kirontoo.github.io/tags/vim/</link>
+    <link>https://kirontoo.github.io/blog/tags/vim/</link>
     <description>Recent content in vim on kironto</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2022 Amy Dang</copyright>
-    <lastBuildDate>Sat, 21 Nov 2020 19:33:51 -0800</lastBuildDate><atom:link href="https://kirontoo.github.io/tags/vim/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 21 Nov 2020 19:33:51 -0800</lastBuildDate><atom:link href="https://kirontoo.github.io/blog/tags/vim/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Useful Vim Tricks</title>
-      <link>https://kirontoo.github.io/posts/vim-tricks/</link>
+      <link>https://kirontoo.github.io/blog/posts/vim-tricks/</link>
       <pubDate>Sat, 21 Nov 2020 19:33:51 -0800</pubDate>
       
-      <guid>https://kirontoo.github.io/posts/vim-tricks/</guid>
+      <guid>https://kirontoo.github.io/blog/posts/vim-tricks/</guid>
       <description>Append Output Of A External Command To Your Buffer The :read command can insert a file or the output of an external program into the current buffer. To run a program just prefix the shell command with !.
 Example:
 :read !echo &amp;#34;hello&amp;#34; You can also specify the line you want to output to. Just prefix read with a number and it will output to that line. Example:
