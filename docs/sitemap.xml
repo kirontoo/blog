@@ -2,6 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://kirontoo.github.io/blog/tags/content/</loc>
+    <lastmod>2022-05-12T23:19:20+00:00</lastmod>
+  </url><url>
+    <loc>https://kirontoo.github.io/blog/posts/</loc>
+    <lastmod>2022-05-12T23:19:20+00:00</lastmod>
+  </url><url>
+    <loc>https://kirontoo.github.io/blog/tags/</loc>
+    <lastmod>2022-05-12T23:19:20+00:00</lastmod>
+  </url><url>
+    <loc>https://kirontoo.github.io/blog/tags/test/</loc>
+    <lastmod>2022-05-12T23:19:20+00:00</lastmod>
+  </url><url>
+    <loc>https://kirontoo.github.io/blog/posts/2022-05-12-test-new-post/</loc>
+    <lastmod>2022-05-12T23:19:20+00:00</lastmod>
+  </url><url>
     <loc>https://kirontoo.github.io/blog/</loc>
     <lastmod>2022-03-30T14:16:28-07:00</lastmod>
   </url><url>
@@ -12,12 +27,6 @@
     <lastmod>2022-03-21T10:23:29-07:00</lastmod>
   </url><url>
     <loc>https://kirontoo.github.io/blog/posts/remove-untracked-files/</loc>
-    <lastmod>2022-03-21T10:23:29-07:00</lastmod>
-  </url><url>
-    <loc>https://kirontoo.github.io/blog/posts/</loc>
-    <lastmod>2022-03-21T10:23:29-07:00</lastmod>
-  </url><url>
-    <loc>https://kirontoo.github.io/blog/tags/</loc>
     <lastmod>2022-03-21T10:23:29-07:00</lastmod>
   </url><url>
     <loc>https://kirontoo.github.io/blog/tags/tips/</loc>
