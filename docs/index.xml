@@ -9,6 +9,16 @@
     <copyright>© 2022 Amy Dang</copyright>
     <lastBuildDate>Wed, 30 Mar 2022 14:16:28 -0700</lastBuildDate><atom:link href="https://kirontoo.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Postsaudio Splitting in Linux</title>
+      <link>https://kirontoo.github.io/blog/posts/audio-splitting-in-linux/</link>
+      <pubDate>Tue, 24 May 2022 12:50:35 -0700</pubDate>
+      
+      <guid>https://kirontoo.github.io/blog/posts/audio-splitting-in-linux/</guid>
+      <description>Audio Splitting In Linux Pre-Requisites You&amp;rsquo;ll need to have both pulseaudio and pavucontrol installed on your system
+Ubuntu sudo apt-get pulseaudio pavucontrol Arch pacman -S pulseaudio pavucontrol  # OR  yay -S pulseaudio pavucontrol Setting up a new audio sink Make a new directory called .pulse in your home directory, this is the default pulseaudio config folder. Note that depending on your OS, the default pulseaudio directory could be in a different path or different folder name.</description>
+    </item>
+    
+    <item>
       <title>Test New Post</title>
       <link>https://kirontoo.github.io/blog/posts/2022-05-12-test-new-post/</link>
       <pubDate>Thu, 12 May 2022 23:19:20 +0000</pubDate>
