@@ -1,19 +1,18 @@
 ---
-title: "Postsaudio Splitting in Linux"
+title: "Audio Splitting in Linux"
 date: 2022-05-24T12:50:35-07:00
 draft: false
 ---
-# Audio Splitting In Linux
 
 ## Pre-Requisites
 You'll need to have both `pulseaudio` and `pavucontrol` installed on your system
 
-### Ubuntu
+### Install For Ubuntu
 ```bash
 sudo apt-get pulseaudio pavucontrol
 ```
 
-### Arch
+### Install For Arch
 
 ```bash
 pacman -S pulseaudio pavucontrol
