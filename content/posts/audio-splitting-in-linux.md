@@ -2,6 +2,7 @@
 title: "Audio Splitting in Linux"
 date: 2022-05-24T12:50:35-07:00
 draft: false
+tags: ["linux", "guide", "audio"]
 ---
 
 ## Pre-Requisites
