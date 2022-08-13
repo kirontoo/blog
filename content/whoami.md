@@ -7,5 +7,6 @@ tag: ["intro"]
 toc: false
 ---
 
-Hey there.
+Hey there! I'm Amy, a frontend developer who loves mechanical keyboards and
+learning new things.
 
