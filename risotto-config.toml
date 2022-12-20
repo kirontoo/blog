@@ -48,6 +48,10 @@ icon = "fas fa-envelope"
 title = "Email"
 url = "mailto:ndangamy@gmail.com"
 
+[[params.socialLinks]]
+icon = "fas fa-rss"
+title = "RSS"
+url = "/blog/index.xml"
 
 [menu]
   [[menu.main]]

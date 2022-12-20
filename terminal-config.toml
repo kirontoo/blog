@@ -58,17 +58,24 @@ sectionPagesMenu = "main"
 
   # whether to show a table of contents
   # can be overridden in a page's front-matter
-  # Toc = false # default
+  Toc = true # default
 
   # set title for the table of contents
   # can be overridden in a page's front-matter
   # TocTitle = "Table of Contents" # default
 
+[params.twitter]
+  # set Twitter handles for Twitter cards
+  # see https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started#card-and-content-attribution
+  # do not include @
+  creator = "rxkironto"
+  site = "rxkironto"
+
 [languages]
   [languages.en]
     title = "Kironto"
-    subtitle = "A simple, retro theme for Hugo"
-    keywords = ""
+    subtitle = "kironto's blog"
+    keywords = "blog, kironto, amy dang, dev, webdev, linux, "
     copyright = ""
     menuMore = "Show more"
     readMore = "Read more"
@@ -89,6 +96,11 @@ sectionPagesMenu = "main"
         name = "Posts"
         url = "/posts"
         weight = 2
+      [[languages.en.menu.main]]
+        identifier = "RSS"
+        name = "RSS"
+        url = "/index.xml"
+        weight = 3
       [[languages.en.menu.main]]
         identifier = "tags"
         name = "tags"
