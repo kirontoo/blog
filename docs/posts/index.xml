@@ -15,7 +15,7 @@
       
       <guid>https://kirontoo.github.io/blog/posts/audio-splitting-in-linux/</guid>
       <description>Pre-Requisites You&amp;rsquo;ll need to have both pulseaudio and pavucontrol installed on your system
-Install For Ubuntu sudo apt-get pulseaudio pavucontrol Install For Arch pacman -S pulseaudio pavucontrol  # OR  yay -S pulseaudio pavucontrol Setting up a new audio sink Make a new directory called .pulse in your home directory, this is the default pulseaudio config folder. Note that depending on your OS, the default pulseaudio directory could be in a different path or different folder name.</description>
+Install For Ubuntu sudo apt-get pulseaudio pavucontrol Install For Arch pacman -S pulseaudio pavucontrol # OR yay -S pulseaudio pavucontrol Setting up a new audio sink Make a new directory called .pulse in your home directory, this is the default pulseaudio config folder. Note that depending on your OS, the default pulseaudio directory could be in a different path or different folder name.</description>
     </item>
     
     <item>
@@ -27,7 +27,7 @@ Install For Ubuntu sudo apt-get pulseaudio pavucontrol Install For Arch pacman -
       <description>git clean -fdx -f - force
 -d - include directories
 -x - include ignored files
- !Use with Caution!
+!Use with Caution!
 This command will delete files that you haven&amp;rsquo;t thought of. Be careful whenever running a command with -f</description>
     </item>
     
@@ -40,7 +40,7 @@ This command will delete files that you haven&amp;rsquo;t thought of. Be careful
       <description>Append Output Of A External Command To Your Buffer The :read command can insert a file or the output of an external program into the current buffer. To run a program just prefix the shell command with !.
 Example:
 :read !echo &amp;#34;hello&amp;#34; You can also specify the line you want to output to. Just prefix read with a number and it will output to that line. Example:
-:12read !echo &amp;#34;hello&amp;#34;To output to a certain number of lines before your current line, prefix with - number of lines.</description>
+:12read !echo &amp;#34;hello&amp;#34; To output to a certain number of lines before your current line, prefix with - number of lines.</description>
     </item>
     
   </channel>

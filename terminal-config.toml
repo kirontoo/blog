@@ -80,6 +80,8 @@ sectionPagesMenu = "main"
     menuMore = "Show more"
     readMore = "Read more"
     readOtherPosts = "Read other posts"
+    missingContentMessage = "I think you're lost."
+    missingBackButtonLabel = "Back to home page"
 
     [languages.en.params.logo]
       logoText = "[kironto] $"

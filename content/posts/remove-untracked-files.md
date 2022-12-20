@@ -1,13 +1,14 @@
 +++
 title = "Git: Removing Untracked Files"
 date = "2022-03-21T10:23:29-07:00"
-authorTwitter = "" #do not include @
+authorTwitter = "rxkironto" #do not include @
 cover = ""
 tags = ["tips", "git"]
 keywords = ["git", "untracked files"]
 description = "How do I delete all untracked files in git?"
 showFullContent = false
 hideComments = false
+author = "Amy Dang"
 +++
 
 ```

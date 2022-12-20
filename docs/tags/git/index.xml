@@ -17,7 +17,7 @@
       <description>git clean -fdx -f - force
 -d - include directories
 -x - include ignored files
- !Use with Caution!
+!Use with Caution!
 This command will delete files that you haven&amp;rsquo;t thought of. Be careful whenever running a command with -f</description>
     </item>
     
