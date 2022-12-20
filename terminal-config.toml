@@ -76,7 +76,7 @@ sectionPagesMenu = "main"
 
     [languages.en.params.logo]
       logoText = "[kironto] $"
-      logoHomeLink = "/"
+      logoHomeLink = "/blog"
 
     [languages.en.menu]
       [[languages.en.menu.main]]
