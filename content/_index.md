@@ -5,5 +5,5 @@ author = "Amy Dang"
 toc = false
 +++
 
-Hey there! Welcome to `Kironto's` blog.
+Welcome to my blog nerds.
 
