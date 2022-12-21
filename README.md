@@ -13,7 +13,7 @@ Use this command for the terminal theme instead:
 ## Compile for production
 
 Run to compile into the `docs` folder:
-`hugo --config ./terminal-config.toml`
+`hugo --config ./terminal-config.toml --destination ./docs`
 
 or:
-`hugo --config ./risotto-config.toml`
+`hugo --config ./risotto-config.toml --destination ./docs`
