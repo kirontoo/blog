@@ -1,11 +1,15 @@
----
-title: "Audio Splitting in Linux"
-date: 2022-05-24T12:50:35-07:00
-draft: false
-tags: ["linux", "guide", "audio"]
-author: "Amy Dang"
-authorTwitter: "rxkironto" #do not include @
----
++++
+title= "Audio Splitting in Linux"
+date= 2022-05-24T12:50:35-07:00
+author = "Amy Dang"
+authorTwitter = "rxkironto" #do not include @
+cover = ""
+tags = ["redux", "webdev", "react", "firebase"]
+keywords = ["", ""]
+description = "Learn how to split audio sources using pulseaudio."
+readingTime = true
+hideComments = false
++++
 
 ## Pre-Requisites
 
@@ -76,7 +80,7 @@ Next, you'll want to make a dummy audio sink. To do this, open up
 
 Here is a template that you can use:
 
-```
+```text
 load-module module-null-sink sink_name=channelname
 update-sink-proplist channelname device.description="channelname Audio"
 update-source-proplist channelname.monitor device.description='Monitor of channelname Audio'
@@ -90,7 +94,7 @@ Replace `channelname` with your audio sink name, then replace `outputdevicename`
 I used this to better control which audio source I want to be streamed on twitch through OBS but still be able to monitor and hear everything.
 Here's what my `default.pa` looks like
 
-```
+```text
 load-module module-null-sink sink_name=twitchaudio
 update-sink-proplist twitchaudio device.description='Twitch Streaming Audio'
 update-source-proplist twitchaudio.monitor device.description='Monitor of Twitch Audio'
@@ -107,7 +111,7 @@ pulseaudio --kill
 
 This should automatically restart `pulseaudio`, but if it doesn't, you can manually start it with:
 
-```
+```bash
 pulseaudio --start
 ```
 
