@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Kironto</title>
-    <link>https://rxkiro.xyz/categories/</link>
+    <link>https://blog.rxkiro.xyz/categories/</link>
     <description>Recent content in Categories on Kironto</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="https://rxkiro.xyz/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language><atom:link href="https://blog.rxkiro.xyz/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

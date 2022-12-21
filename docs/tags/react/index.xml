@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>react on Kironto</title>
-    <link>https://rxkiro.xyz/tags/react/</link>
+    <link>https://blog.rxkiro.xyz/tags/react/</link>
     <description>Recent content in react on Kironto</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 19 Dec 2022 20:46:55 -0800</lastBuildDate><atom:link href="https://rxkiro.xyz/tags/react/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Dec 2022 20:46:55 -0800</lastBuildDate><atom:link href="https://blog.rxkiro.xyz/tags/react/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Setting Up Persistent Authentication With Firebase 9, React and Redux</title>
-      <link>https://rxkiro.xyz/posts/setting-up-persistent-authentication-with-firebase-9-react-and-redux/</link>
+      <link>https://blog.rxkiro.xyz/posts/setting-up-persistent-authentication-with-firebase-9-react-and-redux/</link>
       <pubDate>Mon, 19 Dec 2022 20:46:55 -0800</pubDate>
       
-      <guid>https://rxkiro.xyz/posts/setting-up-persistent-authentication-with-firebase-9-react-and-redux/</guid>
+      <guid>https://blog.rxkiro.xyz/posts/setting-up-persistent-authentication-with-firebase-9-react-and-redux/</guid>
       <description>While working on one of my projects, I had a bit of trouble trying to add persistent authentication with Firebase and so this is my solution. Hope it helps someone!
 Dependencies Make sure to already have a Firebase project created and to install npm packages for both firebase and react-redux.
 npm install @reduxjs/toolkit react-redux firebase Setting up Firebase Before everything, make sure to set up your firebase config. I am using typescript so this file will be called firebase.</description>

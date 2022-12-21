@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>git on Kironto</title>
-    <link>https://rxkiro.xyz/tags/git/</link>
+    <link>https://blog.rxkiro.xyz/tags/git/</link>
     <description>Recent content in git on Kironto</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 21 Mar 2022 10:23:29 -0700</lastBuildDate><atom:link href="https://rxkiro.xyz/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 21 Mar 2022 10:23:29 -0700</lastBuildDate><atom:link href="https://blog.rxkiro.xyz/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Git: Removing Untracked Files</title>
-      <link>https://rxkiro.xyz/posts/remove-untracked-files/</link>
+      <link>https://blog.rxkiro.xyz/posts/remove-untracked-files/</link>
       <pubDate>Mon, 21 Mar 2022 10:23:29 -0700</pubDate>
       
-      <guid>https://rxkiro.xyz/posts/remove-untracked-files/</guid>
+      <guid>https://blog.rxkiro.xyz/posts/remove-untracked-files/</guid>
       <description>git clean -fdx -f - force
 -d - include directories
 -x - include ignored files

@@ -2,107 +2,107 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Kironto</title>
-    <link>https://rxkiro.xyz/tags/</link>
+    <link>https://blog.rxkiro.xyz/tags/</link>
     <description>Recent content in Tags on Kironto</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 19 Dec 2022 20:46:55 -0800</lastBuildDate><atom:link href="https://rxkiro.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Dec 2022 20:46:55 -0800</lastBuildDate><atom:link href="https://blog.rxkiro.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>firebase</title>
-      <link>https://rxkiro.xyz/tags/firebase/</link>
+      <link>https://blog.rxkiro.xyz/tags/firebase/</link>
       <pubDate>Mon, 19 Dec 2022 20:46:55 -0800</pubDate>
       
-      <guid>https://rxkiro.xyz/tags/firebase/</guid>
+      <guid>https://blog.rxkiro.xyz/tags/firebase/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
       <title>react</title>
-      <link>https://rxkiro.xyz/tags/react/</link>
+      <link>https://blog.rxkiro.xyz/tags/react/</link>
       <pubDate>Mon, 19 Dec 2022 20:46:55 -0800</pubDate>
       
-      <guid>https://rxkiro.xyz/tags/react/</guid>
+      <guid>https://blog.rxkiro.xyz/tags/react/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
       <title>redux</title>
-      <link>https://rxkiro.xyz/tags/redux/</link>
+      <link>https://blog.rxkiro.xyz/tags/redux/</link>
       <pubDate>Mon, 19 Dec 2022 20:46:55 -0800</pubDate>
       
-      <guid>https://rxkiro.xyz/tags/redux/</guid>
+      <guid>https://blog.rxkiro.xyz/tags/redux/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
       <title>webdev</title>
-      <link>https://rxkiro.xyz/tags/webdev/</link>
+      <link>https://blog.rxkiro.xyz/tags/webdev/</link>
       <pubDate>Mon, 19 Dec 2022 20:46:55 -0800</pubDate>
       
-      <guid>https://rxkiro.xyz/tags/webdev/</guid>
+      <guid>https://blog.rxkiro.xyz/tags/webdev/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
       <title>audio</title>
-      <link>https://rxkiro.xyz/tags/audio/</link>
+      <link>https://blog.rxkiro.xyz/tags/audio/</link>
       <pubDate>Tue, 24 May 2022 12:50:35 -0700</pubDate>
       
-      <guid>https://rxkiro.xyz/tags/audio/</guid>
+      <guid>https://blog.rxkiro.xyz/tags/audio/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
       <title>guide</title>
-      <link>https://rxkiro.xyz/tags/guide/</link>
+      <link>https://blog.rxkiro.xyz/tags/guide/</link>
       <pubDate>Tue, 24 May 2022 12:50:35 -0700</pubDate>
       
-      <guid>https://rxkiro.xyz/tags/guide/</guid>
+      <guid>https://blog.rxkiro.xyz/tags/guide/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
       <title>linux</title>
-      <link>https://rxkiro.xyz/tags/linux/</link>
+      <link>https://blog.rxkiro.xyz/tags/linux/</link>
       <pubDate>Tue, 24 May 2022 12:50:35 -0700</pubDate>
       
-      <guid>https://rxkiro.xyz/tags/linux/</guid>
+      <guid>https://blog.rxkiro.xyz/tags/linux/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
       <title>git</title>
-      <link>https://rxkiro.xyz/tags/git/</link>
+      <link>https://blog.rxkiro.xyz/tags/git/</link>
       <pubDate>Mon, 21 Mar 2022 10:23:29 -0700</pubDate>
       
-      <guid>https://rxkiro.xyz/tags/git/</guid>
+      <guid>https://blog.rxkiro.xyz/tags/git/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
       <title>tips</title>
-      <link>https://rxkiro.xyz/tags/tips/</link>
+      <link>https://blog.rxkiro.xyz/tags/tips/</link>
       <pubDate>Mon, 21 Mar 2022 10:23:29 -0700</pubDate>
       
-      <guid>https://rxkiro.xyz/tags/tips/</guid>
+      <guid>https://blog.rxkiro.xyz/tags/tips/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
       <title>vim</title>
-      <link>https://rxkiro.xyz/tags/vim/</link>
+      <link>https://blog.rxkiro.xyz/tags/vim/</link>
       <pubDate>Sat, 21 Nov 2020 19:33:51 -0800</pubDate>
       
-      <guid>https://rxkiro.xyz/tags/vim/</guid>
+      <guid>https://blog.rxkiro.xyz/tags/vim/</guid>
       <description></description>
       <content></content>
     </item>

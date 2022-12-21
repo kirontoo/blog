@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Kironto</title>
-    <link>https://rxkiro.xyz/</link>
+    <link>https://blog.rxkiro.xyz/</link>
     <description>Recent content on Kironto</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 30 Mar 2022 14:16:28 -0700</lastBuildDate><atom:link href="https://rxkiro.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 30 Mar 2022 14:16:28 -0700</lastBuildDate><atom:link href="https://blog.rxkiro.xyz/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Setting Up Persistent Authentication With Firebase 9, React and Redux</title>
-      <link>https://rxkiro.xyz/posts/setting-up-persistent-authentication-with-firebase-9-react-and-redux/</link>
+      <link>https://blog.rxkiro.xyz/posts/setting-up-persistent-authentication-with-firebase-9-react-and-redux/</link>
       <pubDate>Mon, 19 Dec 2022 20:46:55 -0800</pubDate>
       
-      <guid>https://rxkiro.xyz/posts/setting-up-persistent-authentication-with-firebase-9-react-and-redux/</guid>
+      <guid>https://blog.rxkiro.xyz/posts/setting-up-persistent-authentication-with-firebase-9-react-and-redux/</guid>
       <description>While working on one of my projects, I had a bit of trouble trying to add persistent authentication with Firebase and so this is my solution. Hope it helps someone!
 Dependencies Make sure to already have a Firebase project created and to install npm packages for both firebase and react-redux.
 npm install @reduxjs/toolkit react-redux firebase Setting up Firebase Before everything, make sure to set up your firebase config. I am using typescript so this file will be called firebase.</description>
@@ -210,10 +210,10 @@ up when the component unmounts.&lt;/p&gt;
     
     <item>
       <title>Audio Splitting in Linux</title>
-      <link>https://rxkiro.xyz/posts/audio-splitting-in-linux/</link>
+      <link>https://blog.rxkiro.xyz/posts/audio-splitting-in-linux/</link>
       <pubDate>Tue, 24 May 2022 12:50:35 -0700</pubDate>
       
-      <guid>https://rxkiro.xyz/posts/audio-splitting-in-linux/</guid>
+      <guid>https://blog.rxkiro.xyz/posts/audio-splitting-in-linux/</guid>
       <description>Pre-Requisites You&amp;rsquo;ll need to have both pulseaudio and pavucontrol installed on your system
 Install For Ubuntu sudo apt-get pulseaudio pavucontrol Install For Arch pacman -S pulseaudio pavucontrol # OR yay -S pulseaudio pavucontrol Setting up a new audio sink Make a new directory called .pulse in your home directory, this is the default pulseaudio config folder. Note that depending on your OS, the default pulseaudio directory could be in a different path or different folder name.</description>
       <content>&lt;h2 id=&#34;pre-requisites&#34;&gt;Pre-Requisites&lt;/h2&gt;
@@ -278,10 +278,10 @@ This app will let you control where you want all of your audio sources to be dir
     
     <item>
       <title>Hello World.</title>
-      <link>https://rxkiro.xyz/whoami/</link>
+      <link>https://blog.rxkiro.xyz/whoami/</link>
       <pubDate>Wed, 30 Mar 2022 11:04:29 -0700</pubDate>
       
-      <guid>https://rxkiro.xyz/whoami/</guid>
+      <guid>https://blog.rxkiro.xyz/whoami/</guid>
       <description>Hey there! I&amp;rsquo;m Amy, a frontend developer who loves mechanical keyboards and learning new things.</description>
       <content>&lt;p&gt;Hey there! I&amp;rsquo;m Amy, a frontend developer who loves mechanical keyboards and
 learning new things.&lt;/p&gt;
@@ -290,10 +290,10 @@ learning new things.&lt;/p&gt;
     
     <item>
       <title>Git: Removing Untracked Files</title>
-      <link>https://rxkiro.xyz/posts/remove-untracked-files/</link>
+      <link>https://blog.rxkiro.xyz/posts/remove-untracked-files/</link>
       <pubDate>Mon, 21 Mar 2022 10:23:29 -0700</pubDate>
       
-      <guid>https://rxkiro.xyz/posts/remove-untracked-files/</guid>
+      <guid>https://blog.rxkiro.xyz/posts/remove-untracked-files/</guid>
       <description>git clean -fdx -f - force
 -d - include directories
 -x - include ignored files
@@ -312,10 +312,10 @@ running a command with &lt;code&gt;-f&lt;/code&gt;&lt;/p&gt;
     
     <item>
       <title>Useful Vim Tricks</title>
-      <link>https://rxkiro.xyz/posts/vim-tricks/</link>
+      <link>https://blog.rxkiro.xyz/posts/vim-tricks/</link>
       <pubDate>Sat, 21 Nov 2020 19:33:51 -0800</pubDate>
       
-      <guid>https://rxkiro.xyz/posts/vim-tricks/</guid>
+      <guid>https://blog.rxkiro.xyz/posts/vim-tricks/</guid>
       <description>Append Output Of A External Command To Your Buffer The :read command can insert a file or the output of an external program into the current buffer. To run a program just prefix the shell command with !.
 Example:
 :read !echo &amp;#34;hello&amp;#34; You can also specify the line you want to output to. Just prefix read with a number and it will output to that line. Example:
