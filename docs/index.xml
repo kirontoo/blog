@@ -6,7 +6,33 @@
     <description>Recent content on Kironto</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
     <lastBuildDate>Wed, 30 Mar 2022 14:16:28 -0700</lastBuildDate><atom:link href="https://blog.rxkiro.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Contact Me</title>
+      <link>https://blog.rxkiro.xyz/contact/</link>
+      <pubDate>Tue, 20 Dec 2022 19:16:28 -0700</pubDate>
+      
+      <guid>https://blog.rxkiro.xyz/contact/</guid>
+      <description>Email You can email me at ndangamy@gmail.com
+Social Media:
+github twitter linkedin RSS Keep in touch by following my RSS feed
+Work Check out the thing&amp;rsquo;s I&amp;rsquo;ve worked on rxkiro.xyz</description>
+      <content>&lt;h2 id=&#34;email&#34;&gt;Email&lt;/h2&gt;
+&lt;p&gt;You can email me at &lt;a href=&#34;mailto:ndangamy@gmail.com&#34;&gt;ndangamy@gmail.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Social Media:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/kirontoo&#34;&gt;github&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/rxkironto&#34;&gt;twitter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.linkedin.com/in/amyndang&#34;&gt;linkedin&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;rss&#34;&gt;RSS&lt;/h2&gt;
+&lt;p&gt;Keep in touch by following my &lt;a href=&#34;https://blog.rxkiro.xyz/index.xml&#34;&gt;RSS feed&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;work&#34;&gt;Work&lt;/h2&gt;
+&lt;p&gt;Check out the thing&amp;rsquo;s I&amp;rsquo;ve worked on &lt;a href=&#34;https://rxkiro.xyz&#34;&gt;rxkiro.xyz&lt;/a&gt;&lt;/p&gt;
+</content>
+    </item>
+    
     <item>
       <title>Audio Splitting in Linux</title>
       <link>https://blog.rxkiro.xyz/posts/audio-splitting-in-linux/</link>
@@ -49,24 +75,24 @@ Paste this in a empty text document. You&amp;rsquo;ll need this info later.&lt;/
 &lt;p&gt;Next, you&amp;rsquo;ll want to make a dummy audio sink. To do this, open up
 &lt;code&gt;~/.pulse/default.pa&lt;/code&gt; in a text editor. Go all the way to the bottom of the document and use this template to define your new audio sink.&lt;/p&gt;
 &lt;p&gt;Here is a template that you can use:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;load-module module-null-sink sink_name=channelname
-update-sink-proplist channelname device.description=&amp;#34;channelname Audio&amp;#34;
-update-source-proplist channelname.monitor device.description=&amp;#39;Monitor of channelname Audio&amp;#39;
-load-module module-loopback source=channelname.monitor sink=outputdevicename latency_msec=1
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Replace &lt;code&gt;channelname&lt;/code&gt; with your audio sink name, then replace &lt;code&gt;outputdevicename&lt;/code&gt; with the audio output device we copied earlier.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;load-module module-null-sink sink_name=channelname
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;update-sink-proplist channelname device.description=&amp;#34;channelname Audio&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;update-source-proplist channelname.monitor device.description=&amp;#39;Monitor of channelname Audio&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;load-module module-loopback source=channelname.monitor sink=outputdevicename latency_msec=1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Replace &lt;code&gt;channelname&lt;/code&gt; with your audio sink name, then replace &lt;code&gt;outputdevicename&lt;/code&gt; with the audio output device we copied earlier.&lt;/p&gt;
 &lt;h3 id=&#34;example&#34;&gt;Example&lt;/h3&gt;
 &lt;p&gt;I used this to better control which audio source I want to be streamed on twitch through OBS but still be able to monitor and hear everything.
 Here&amp;rsquo;s what my &lt;code&gt;default.pa&lt;/code&gt; looks like&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;load-module module-null-sink sink_name=twitchaudio
-update-sink-proplist twitchaudio device.description=&amp;#39;Twitch Streaming Audio&amp;#39;
-update-source-proplist twitchaudio.monitor device.description=&amp;#39;Monitor of Twitch Audio&amp;#39;
-load-module module-loopback source=twitchaudio.monitor sink=alsa_output.usb-Razer_Razer_Kraken_7.1_V2_00000000-00.analog-stereo latency_msec=1
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;restart-pulseaudio-and-all-of-your-apps&#34;&gt;Restart Pulseaudio And All Of Your Apps&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;load-module module-null-sink sink_name=twitchaudio
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;update-sink-proplist twitchaudio device.description=&amp;#39;Twitch Streaming Audio&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;update-source-proplist twitchaudio.monitor device.description=&amp;#39;Monitor of Twitch Audio&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;load-module module-loopback source=twitchaudio.monitor sink=alsa_output.usb-Razer_Razer_Kraken_7.1_V2_00000000-00.analog-stereo latency_msec=1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;restart-pulseaudio-and-all-of-your-apps&#34;&gt;Restart Pulseaudio And All Of Your Apps&lt;/h2&gt;
 &lt;p&gt;After you&amp;rsquo;re done making custom audio sinks, make sure to restart &lt;code&gt;pulseaudio&lt;/code&gt; using this command:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pulseaudio --kill
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This should automatically restart &lt;code&gt;pulseaudio&lt;/code&gt;, but if it doesn&amp;rsquo;t, you can manually start it with:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;pulseaudio --start
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After restarting &lt;code&gt;pulseaudio&lt;/code&gt;, you&amp;rsquo;ll find that there&amp;rsquo;s no audio. You&amp;rsquo;ll need to restart all your apps that streams audio to your speakers.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pulseaudio --start
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After restarting &lt;code&gt;pulseaudio&lt;/code&gt;, you&amp;rsquo;ll find that there&amp;rsquo;s no audio. You&amp;rsquo;ll need to restart all your apps that streams audio to your speakers.&lt;/p&gt;
 &lt;h2 id=&#34;pulseaudio-volume-control-app-pavucontrol&#34;&gt;Pulseaudio Volume Control App (pavucontrol)&lt;/h2&gt;
 &lt;p&gt;From here launch &lt;code&gt;pavucontrol&lt;/code&gt; and you&amp;rsquo;ll be able to see your new audio sink in the &lt;code&gt;recording, playback, and output devices&lt;/code&gt; tabs. `
 This app will let you control where you want all of your audio sources to be directed to.&lt;/p&gt;
@@ -81,9 +107,15 @@ This app will let you control where you want all of your audio sources to be dir
       <pubDate>Wed, 30 Mar 2022 11:04:29 -0700</pubDate>
       
       <guid>https://blog.rxkiro.xyz/whoami/</guid>
-      <description>Hey there! I&amp;rsquo;m Amy, a frontend developer who loves mechanical keyboards and learning new things.</description>
+      <description>Hey there! I&amp;rsquo;m Amy, a frontend developer who loves mechanical keyboards and learning new things.
+This blog will pretty much be me documenting things I find interesting, new things that I&amp;rsquo;ve learned. No idea how often I will post but meh.
+You can check out the things I&amp;rsquo;ve worked on at rxkiro.xyz. And you can click here to find out how to contact me.</description>
       <content>&lt;p&gt;Hey there! I&amp;rsquo;m Amy, a frontend developer who loves mechanical keyboards and
 learning new things.&lt;/p&gt;
+&lt;p&gt;This blog will pretty much be me documenting things I find
+interesting, new things that I&amp;rsquo;ve learned. No idea how often I will post but meh.&lt;/p&gt;
+&lt;p&gt;You can check out the things I&amp;rsquo;ve worked on at &lt;a href=&#34;https://rxkiro.xyz/&#34;&gt;rxkiro.xyz&lt;/a&gt;.
+And you can &lt;a href=&#34;https://blog.rxkiro.xyz/contact/&#34;&gt;click here&lt;/a&gt; to find out how to contact me.&lt;/p&gt;
 </content>
     </item>
     

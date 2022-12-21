@@ -6,20 +6,22 @@
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Pre-Requisites You&amp;rsquo;ll need to have both pulseaudio and pavucontrol installed on your system
-Install For Ubuntu sudo apt-get pulseaudio pavucontrol Install For Arch pacman -S pulseaudio pavucontrol # OR yay -S pulseaudio pavucontrol Setting up a new audio sink Make a new directory called .pulse in your home directory, this is the default pulseaudio config folder. Note that depending on your OS, the default pulseaudio directory could be in a different path or different folder name." />
-<meta name="keywords" content="blog, kironto, amy dang, dev, webdev, linux, " />
+<meta name="description" content="Learn how to split audio sources using pulseaudio." />
+<meta name="keywords" content=", " />
 <meta name="robots" content="noodp" />
 <link rel="canonical" href="https://blog.rxkiro.xyz/posts/audio-splitting-in-linux/" />
 
 
 
 
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Rhodium+Libre&display=swap" rel="stylesheet">
+
+
 <link rel="stylesheet" href="https://blog.rxkiro.xyz/assets/style.css">
 
 
 
-
+<link rel="stylesheet" href="https://blog.rxkiro.xyz/style.css">
 
 
 <link rel="apple-touch-icon" href="https://blog.rxkiro.xyz/img/apple-touch-icon-192x192.png">
@@ -40,14 +42,11 @@ Install For Ubuntu sudo apt-get pulseaudio pavucontrol Install For Arch pacman -
 <meta property="og:locale" content="en" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Audio Splitting in Linux">
-<meta property="og:description" content="Pre-Requisites You&amp;rsquo;ll need to have both pulseaudio and pavucontrol installed on your system
-Install For Ubuntu sudo apt-get pulseaudio pavucontrol Install For Arch pacman -S pulseaudio pavucontrol # OR yay -S pulseaudio pavucontrol Setting up a new audio sink Make a new directory called .pulse in your home directory, this is the default pulseaudio config folder. Note that depending on your OS, the default pulseaudio directory could be in a different path or different folder name." />
+<meta property="og:description" content="Learn how to split audio sources using pulseaudio." />
 <meta property="og:url" content="https://blog.rxkiro.xyz/posts/audio-splitting-in-linux/" />
 <meta property="og:site_name" content="Kironto" />
 
-  
-    <meta property="og:image" content="https://blog.rxkiro.xyz/img/favicon/orange.png">
-  
+  <meta property="og:image" content="https://blog.rxkiro.xyz/">
 
 <meta property="og:image:width" content="2048">
 <meta property="og:image:height" content="1024">
@@ -96,7 +95,11 @@ Install For Ubuntu sudo apt-get pulseaudio pavucontrol Install For Arch pacman -
         
       
         
-          <li><a href="/posts">Posts</a></li>
+          <li><a href="/posts">posts</a></li>
+        
+      
+        
+          <li><a href="/contact">contact</a></li>
         
       
       
@@ -104,10 +107,6 @@ Install For Ubuntu sudo apt-get pulseaudio pavucontrol Install For Arch pacman -
           <li class="menu__sub-inner-more-trigger">Show more ▾</li>
 
           <ul class="menu__sub-inner-more hidden">
-            
-              
-                <li><a href="/index.xml">RSS</a></li>
-              
             
               
                 <li><a href="/categories/">categories</a></li>
@@ -136,11 +135,11 @@ Install For Ubuntu sudo apt-get pulseaudio pavucontrol Install For Arch pacman -
       
     
       
-        <li><a href="/posts">Posts</a></li>
+        <li><a href="/posts">posts</a></li>
       
     
       
-        <li><a href="/index.xml">RSS</a></li>
+        <li><a href="/contact">contact</a></li>
       
     
       
@@ -173,6 +172,8 @@ Install For Ubuntu sudo apt-get pulseaudio pavucontrol Install For Arch pacman -
       <span class="post-date">
         2022-05-24
         
+          [Updated: 2022-05-24]
+        
       </span>
     
     
@@ -186,11 +187,13 @@ Install For Ubuntu sudo apt-get pulseaudio pavucontrol Install For Arch pacman -
   
   <span class="post-tags">
     
-    #<a href="https://blog.rxkiro.xyz/tags/linux/">linux</a>&nbsp;
+    #<a href="https://blog.rxkiro.xyz/tags/redux/">redux</a>&nbsp;
     
-    #<a href="https://blog.rxkiro.xyz/tags/guide/">guide</a>&nbsp;
+    #<a href="https://blog.rxkiro.xyz/tags/webdev/">webdev</a>&nbsp;
     
-    #<a href="https://blog.rxkiro.xyz/tags/audio/">audio</a>&nbsp;
+    #<a href="https://blog.rxkiro.xyz/tags/react/">react</a>&nbsp;
+    
+    #<a href="https://blog.rxkiro.xyz/tags/firebase/">firebase</a>&nbsp;
     
   </span>
   
@@ -258,24 +261,24 @@ Paste this in a empty text document. You&rsquo;ll need this info later.</p>
 <p>Next, you&rsquo;ll want to make a dummy audio sink. To do this, open up
 <code>~/.pulse/default.pa</code> in a text editor. Go all the way to the bottom of the document and use this template to define your new audio sink.</p>
 <p>Here is a template that you can use:</p>
-<pre tabindex="0"><code>load-module module-null-sink sink_name=channelname
-update-sink-proplist channelname device.description=&#34;channelname Audio&#34;
-update-source-proplist channelname.monitor device.description=&#39;Monitor of channelname Audio&#39;
-load-module module-loopback source=channelname.monitor sink=outputdevicename latency_msec=1
-</code></pre><p>Replace <code>channelname</code> with your audio sink name, then replace <code>outputdevicename</code> with the audio output device we copied earlier.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>load-module module-null-sink sink_name=channelname
+</span></span><span style="display:flex;"><span>update-sink-proplist channelname device.description=&#34;channelname Audio&#34;
+</span></span><span style="display:flex;"><span>update-source-proplist channelname.monitor device.description=&#39;Monitor of channelname Audio&#39;
+</span></span><span style="display:flex;"><span>load-module module-loopback source=channelname.monitor sink=outputdevicename latency_msec=1
+</span></span></code></pre></div><p>Replace <code>channelname</code> with your audio sink name, then replace <code>outputdevicename</code> with the audio output device we copied earlier.</p>
 <h3 id="example">Example<a href="#example" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <p>I used this to better control which audio source I want to be streamed on twitch through OBS but still be able to monitor and hear everything.
 Here&rsquo;s what my <code>default.pa</code> looks like</p>
-<pre tabindex="0"><code>load-module module-null-sink sink_name=twitchaudio
-update-sink-proplist twitchaudio device.description=&#39;Twitch Streaming Audio&#39;
-update-source-proplist twitchaudio.monitor device.description=&#39;Monitor of Twitch Audio&#39;
-load-module module-loopback source=twitchaudio.monitor sink=alsa_output.usb-Razer_Razer_Kraken_7.1_V2_00000000-00.analog-stereo latency_msec=1
-</code></pre><h2 id="restart-pulseaudio-and-all-of-your-apps">Restart Pulseaudio And All Of Your Apps<a href="#restart-pulseaudio-and-all-of-your-apps" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>load-module module-null-sink sink_name=twitchaudio
+</span></span><span style="display:flex;"><span>update-sink-proplist twitchaudio device.description=&#39;Twitch Streaming Audio&#39;
+</span></span><span style="display:flex;"><span>update-source-proplist twitchaudio.monitor device.description=&#39;Monitor of Twitch Audio&#39;
+</span></span><span style="display:flex;"><span>load-module module-loopback source=twitchaudio.monitor sink=alsa_output.usb-Razer_Razer_Kraken_7.1_V2_00000000-00.analog-stereo latency_msec=1
+</span></span></code></pre></div><h2 id="restart-pulseaudio-and-all-of-your-apps">Restart Pulseaudio And All Of Your Apps<a href="#restart-pulseaudio-and-all-of-your-apps" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <p>After you&rsquo;re done making custom audio sinks, make sure to restart <code>pulseaudio</code> using this command:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pulseaudio --kill
 </span></span></code></pre></div><p>This should automatically restart <code>pulseaudio</code>, but if it doesn&rsquo;t, you can manually start it with:</p>
-<pre tabindex="0"><code>pulseaudio --start
-</code></pre><p>After restarting <code>pulseaudio</code>, you&rsquo;ll find that there&rsquo;s no audio. You&rsquo;ll need to restart all your apps that streams audio to your speakers.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pulseaudio --start
+</span></span></code></pre></div><p>After restarting <code>pulseaudio</code>, you&rsquo;ll find that there&rsquo;s no audio. You&rsquo;ll need to restart all your apps that streams audio to your speakers.</p>
 <h2 id="pulseaudio-volume-control-app-pavucontrol">Pulseaudio Volume Control App (pavucontrol)<a href="#pulseaudio-volume-control-app-pavucontrol" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <p>From here launch <code>pavucontrol</code> and you&rsquo;ll be able to see your new audio sink in the <code>recording, playback, and output devices</code> tabs. `
 This app will let you control where you want all of your audio sources to be directed to.</p>
@@ -318,8 +321,8 @@ This app will let you control where you want all of your audio sources to be dir
     <footer class="footer">
   <div class="footer__inner">
     
-      <div class="copyright">
-        <span>© 2022 Powered by <a href="http://gohugo.io">Hugo</a></span>
+      <div class="copyright copyright--user">
+        <span>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</span>
     
         <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
       </div>
