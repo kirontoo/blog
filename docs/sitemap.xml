@@ -2,27 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://blog.rxkiro.xyz/tags/firebase/</loc>
-    <lastmod>2022-12-19T20:46:55-08:00</lastmod>
-  </url><url>
-    <loc>https://blog.rxkiro.xyz/posts/</loc>
-    <lastmod>2022-12-19T20:46:55-08:00</lastmod>
-  </url><url>
-    <loc>https://blog.rxkiro.xyz/tags/react/</loc>
-    <lastmod>2022-12-19T20:46:55-08:00</lastmod>
-  </url><url>
-    <loc>https://blog.rxkiro.xyz/tags/redux/</loc>
-    <lastmod>2022-12-19T20:46:55-08:00</lastmod>
-  </url><url>
-    <loc>https://blog.rxkiro.xyz/posts/setting-up-persistent-authentication-with-firebase-9-react-and-redux/</loc>
-    <lastmod>2022-12-19T20:46:55-08:00</lastmod>
-  </url><url>
-    <loc>https://blog.rxkiro.xyz/tags/</loc>
-    <lastmod>2022-12-19T20:46:55-08:00</lastmod>
-  </url><url>
-    <loc>https://blog.rxkiro.xyz/tags/webdev/</loc>
-    <lastmod>2022-12-19T20:46:55-08:00</lastmod>
-  </url><url>
     <loc>https://blog.rxkiro.xyz/tags/audio/</loc>
     <lastmod>2022-05-24T12:50:35-07:00</lastmod>
   </url><url>
@@ -33,6 +12,12 @@
     <lastmod>2022-05-24T12:50:35-07:00</lastmod>
   </url><url>
     <loc>https://blog.rxkiro.xyz/tags/linux/</loc>
+    <lastmod>2022-05-24T12:50:35-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.rxkiro.xyz/posts/</loc>
+    <lastmod>2022-05-24T12:50:35-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.rxkiro.xyz/tags/</loc>
     <lastmod>2022-05-24T12:50:35-07:00</lastmod>
   </url><url>
     <loc>https://blog.rxkiro.xyz/</loc>
