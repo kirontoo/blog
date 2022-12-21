@@ -1,4 +1,5 @@
-baseURL = "https://kirontoo.github.io/blog/"
+# baseURL = "https://kirontoo.github.io/"
+baseUrl = "https://rxkiro.xyz/"
 theme = "terminal"
 title = "kironto"
 author = "Amy Dang"
@@ -85,7 +86,7 @@ sectionPagesMenu = "main"
 
     [languages.en.params.logo]
       logoText = "[kironto] $"
-      logoHomeLink = "/blog"
+      logoHomeLink = "/"
 
     [languages.en.menu]
       [[languages.en.menu.main]]

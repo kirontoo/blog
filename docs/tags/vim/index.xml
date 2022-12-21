@@ -1,23 +1,94 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>vim on kironto</title>
-    <link>https://kirontoo.github.io/blog/tags/vim/</link>
-    <description>Recent content in vim on kironto</description>
+    <title>vim on Kironto</title>
+    <link>https://rxkiro.xyz/tags/vim/</link>
+    <description>Recent content in vim on Kironto</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>© 2022 Amy Dang</copyright>
-    <lastBuildDate>Sat, 21 Nov 2020 19:33:51 -0800</lastBuildDate><atom:link href="https://kirontoo.github.io/blog/tags/vim/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 21 Nov 2020 19:33:51 -0800</lastBuildDate><atom:link href="https://rxkiro.xyz/tags/vim/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Useful Vim Tricks</title>
-      <link>https://kirontoo.github.io/blog/posts/vim-tricks/</link>
+      <link>https://rxkiro.xyz/posts/vim-tricks/</link>
       <pubDate>Sat, 21 Nov 2020 19:33:51 -0800</pubDate>
       
-      <guid>https://kirontoo.github.io/blog/posts/vim-tricks/</guid>
+      <guid>https://rxkiro.xyz/posts/vim-tricks/</guid>
       <description>Append Output Of A External Command To Your Buffer The :read command can insert a file or the output of an external program into the current buffer. To run a program just prefix the shell command with !.
 Example:
 :read !echo &amp;#34;hello&amp;#34; You can also specify the line you want to output to. Just prefix read with a number and it will output to that line. Example:
 :12read !echo &amp;#34;hello&amp;#34; To output to a certain number of lines before your current line, prefix with - number of lines.</description>
+      <content>&lt;h2 id=&#34;append-output-of-a-external-command-to-your-buffer&#34;&gt;Append Output Of A External Command To Your Buffer&lt;/h2&gt;
+&lt;p&gt;The &lt;code&gt;:read&lt;/code&gt; command can insert a file or the output of an external program into the current buffer.
+To run a program just prefix the shell command with &lt;code&gt;!&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:&lt;span style=&#34;color:#a6e22e&#34;&gt;read&lt;/span&gt; !&lt;span style=&#34;color:#a6e22e&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;hello&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You can also specify the line you want to output to. Just prefix &lt;code&gt;read&lt;/code&gt; with a number and it will output to that line.
+Example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:&lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;read !&lt;span style=&#34;color:#a6e22e&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;hello&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;To output to a certain number of lines before your current line, prefix with &lt;code&gt;-&lt;/code&gt; number of lines.
+&lt;code&gt;-&lt;/code&gt; for before.&lt;/p&gt;
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:&lt;span style=&#34;color:#ae81ff&#34;&gt;-12&lt;/span&gt;read !&lt;span style=&#34;color:#a6e22e&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;hello&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;create-a-new-file-in-the-same-directory-as-the-current-buffer&#34;&gt;Create A New File In The Same Directory As The Current Buffer&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;%:h&lt;/code&gt; will autocomplete the folder path for you. Press &amp;lsquo;&lt;TAB&gt;&amp;rsquo; to autofill the
+full path&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt; %:&lt;span style=&#34;color:#a6e22e&#34;&gt;h&lt;/span&gt;/&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;custom-settings-for-different-filetypes--languages-ftplugin&#34;&gt;Custom Settings For Different Filetypes / Languages: ftplugin&lt;/h2&gt;
+&lt;p&gt;By using the &lt;code&gt;ftplugin&lt;/code&gt; directory, you can apply different settings or keymaps
+for different languages and filetypes.&lt;/p&gt;
+&lt;p&gt;For example: In the &lt;code&gt;$HOME/.config/nvim/ftplugin/javascript.vim&lt;/code&gt; file
+&lt;code&gt;nnoremap ,get     :read $VIMPATH/snippets/js/get.js&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;when you run this keymap, it will pipe the contents of the &lt;code&gt;.js&lt;/code&gt; file into
+your current buffer&lt;/p&gt;
+&lt;h2 id=&#34;sorting&#34;&gt;Sorting&lt;/h2&gt;
+&lt;p&gt;Highlight the lines you want to sort, then run the command: &lt;code&gt;:sort&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Example&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// before
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;banana&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;banana&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;durian&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;durian&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;cantalope&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cantalope&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;apple&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;apple&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// after
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;apple&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;apple&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;banana&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;banana&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;cantalope&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cantalope&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;durian&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;durian&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;columns&#34;&gt;Columns&lt;/h2&gt;
+&lt;p&gt;Highlight (using shift+v) the lines you want, then run the command &lt;code&gt;:!column --table&lt;/code&gt;.
+This will organize the spacing for you.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Example&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// before
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;apple&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;apple&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;banana&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;banana&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;cantalope&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cantalope&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;durian&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;durian&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// after
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;apple&lt;/span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;apple&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;banana&lt;/span&gt;     &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;banana&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;cantalope&lt;/span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cantalope&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;durian&lt;/span&gt;     &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;durian&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;multiple-commands-in-one&#34;&gt;Multiple Commands In One&lt;/h2&gt;
+&lt;p&gt;You can execute multiple commands in one command by separating them with &lt;code&gt;|&lt;/code&gt;.
+Example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:%&lt;span style=&#34;color:#a6e22e&#34;&gt;s&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;/hello/&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;world&lt;/span&gt; | %&lt;span style=&#34;color:#a6e22e&#34;&gt;s&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;/foo/&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;bar&lt;/span&gt; | %&lt;span style=&#34;color:#a6e22e&#34;&gt;s&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;/hello/&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;goodbye&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;use-case-generating-a-file&#34;&gt;Use Case: Generating A File&lt;/h3&gt;
+&lt;p&gt;Sometimes you just need to quickly create a file with some boilerplate in it,
+to do this you can make vim open and read file, then pipe it into your current buffer.&lt;/p&gt;
+&lt;p&gt;You can create a snippets folder that holds all of your snippets or boilerplate.
+Using these files, I can generate the files I want by combining commands in VIM.&lt;/p&gt;
+&lt;p&gt;Example: I have a snippet file called &lt;code&gt;test.js.&lt;/code&gt; In this file, I have some boilerplate for a
+test file for a nodejs project. In any given project, I can generate a new test file in the same directory as
+my current buffer is in using:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt; %:&lt;span style=&#34;color:#a6e22e&#34;&gt;h&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;/mytest.test.js | read /&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;path&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;/to/&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;snippet&lt;/span&gt;/&lt;span style=&#34;color:#a6e22e&#34;&gt;test&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;js&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;windows&#34;&gt;Windows&lt;/h2&gt;
+&lt;h3 id=&#34;hiding-windows&#34;&gt;Hiding Windows&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;noremap&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;leader&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;hh&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;C&lt;/span&gt;-&lt;span style=&#34;color:#a6e22e&#34;&gt;w&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;h&lt;/span&gt;:&lt;span style=&#34;color:#a6e22e&#34;&gt;hide&lt;/span&gt;&amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;CR&lt;/span&gt;&amp;gt;	&lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; hide the left window&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;noremap&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;leader&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;hj&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;C&lt;/span&gt;-&lt;span style=&#34;color:#a6e22e&#34;&gt;w&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;j&lt;/span&gt;:&lt;span style=&#34;color:#a6e22e&#34;&gt;hide&lt;/span&gt;&amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;CR&lt;/span&gt;&amp;gt;	&lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; hide the bottom window&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;noremap&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;leader&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;hk&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;C&lt;/span&gt;-&lt;span style=&#34;color:#a6e22e&#34;&gt;w&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;k&lt;/span&gt;:&lt;span style=&#34;color:#a6e22e&#34;&gt;hide&lt;/span&gt;&amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;CR&lt;/span&gt;&amp;gt;	&lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; hide the top window&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;noremap&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;leader&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;hl&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;C&lt;/span&gt;-&lt;span style=&#34;color:#a6e22e&#34;&gt;w&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;l&lt;/span&gt;:&lt;span style=&#34;color:#a6e22e&#34;&gt;hide&lt;/span&gt;&amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;CR&lt;/span&gt;&amp;gt;	&lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; hide the right window&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
     </item>
     
   </channel>

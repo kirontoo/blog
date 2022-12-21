@@ -1,24 +1,32 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>git on kironto</title>
-    <link>https://kirontoo.github.io/blog/tags/git/</link>
-    <description>Recent content in git on kironto</description>
+    <title>git on Kironto</title>
+    <link>https://rxkiro.xyz/tags/git/</link>
+    <description>Recent content in git on Kironto</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>© 2022 Amy Dang</copyright>
-    <lastBuildDate>Mon, 21 Mar 2022 10:23:29 -0700</lastBuildDate><atom:link href="https://kirontoo.github.io/blog/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 21 Mar 2022 10:23:29 -0700</lastBuildDate><atom:link href="https://rxkiro.xyz/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Git: Removing Untracked Files</title>
-      <link>https://kirontoo.github.io/blog/posts/remove-untracked-files/</link>
+      <link>https://rxkiro.xyz/posts/remove-untracked-files/</link>
       <pubDate>Mon, 21 Mar 2022 10:23:29 -0700</pubDate>
       
-      <guid>https://kirontoo.github.io/blog/posts/remove-untracked-files/</guid>
+      <guid>https://rxkiro.xyz/posts/remove-untracked-files/</guid>
       <description>git clean -fdx -f - force
 -d - include directories
 -x - include ignored files
 !Use with Caution!
 This command will delete files that you haven&amp;rsquo;t thought of. Be careful whenever running a command with -f</description>
+      <content>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git clean -fdx
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;-f - force&lt;/p&gt;
+&lt;p&gt;-d - include directories&lt;/p&gt;
+&lt;p&gt;-x - include ignored files&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;!Use with Caution!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;This command will delete files that you haven&amp;rsquo;t thought of. Be careful whenever
+running a command with &lt;code&gt;-f&lt;/code&gt;&lt;/p&gt;
+</content>
     </item>
     
   </channel>
