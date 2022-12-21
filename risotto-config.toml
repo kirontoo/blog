@@ -37,7 +37,7 @@ logo = "images/rice.svg"
 [[params.socialLinks]]
 icon = "fas fa-code"
 title = "Portfolio"
-url = "https://kirontoo.github.io"
+url = "https://rxkiro.xyz"
 
 [[params.socialLinks]]
 icon = "fab fa-github"
