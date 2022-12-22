@@ -14,9 +14,6 @@
 
 
 
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Rhodium+Libre&display=swap" rel="stylesheet">
-
-
 <link rel="stylesheet" href="https://blog.rxkiro.xyz/assets/style.css">
 
 
@@ -53,7 +50,6 @@
 
 
   <meta property="article:published_time" content="2020-11-21 19:33:51 -0800 PST" />
-
 
 
 
@@ -322,6 +318,30 @@ my current buffer is in using:</p>
 
   
   
+
+
+<script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+
+<div id="cactus-comments"></div>
+
+<script>
+initComments({
+    node: document.getElementById("cactus-comments"),
+    defaultHomeserverUrl: 'https:\/\/matrix.cactus.chat:8448',
+    serverName: 'cactus.chat',
+    siteName: "blog.rxkiro.xyz",
+    commentSectionId: "3b3fbd133ccb2a62afb3f8ae2d9507b8"
+})
+
+const cactusBtns = document.getElementsByClassName("cactus-button");
+for(let i = 0; i < cactusBtns.length; i++ ) {
+    cactusBtns[i].classList.add('button');
+}
+
+const cactusComment = document.getElementsByClassName("cactus-editor-textarea")[0];
+cactusComment.rows = 7;
+</script>
+
 
   
 </div>

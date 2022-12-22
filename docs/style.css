@@ -1,4 +1,156 @@
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
+:root {
+  --cactus-error-color: #ff6266;
+}
+
 body {
   font-family: "Share Tech Mono", monospace;
+}
+
+.cactus-editor {
+  margin-top: 1rem;
+}
+
+.cactus-editor-textarea {
+  width: 100%;
+}
+
+.cactus-comments-list,
+.cactus-editor-textarea,
+.cactus-editor-name > span > input[type="text"],
+.cactus-login-field > input {
+  background: var(--background);
+  color: var(--color);
+  padding: 0.5rem;
+  border: 1px solid var(--accent);
+}
+
+.cactus-editor-below {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.cactus-button {
+  background: var(--accent);
+  color: var(--background);
+  border-radius: 0;
+  padding: 0.3rem 0.5rem !important;
+  width: fit;
+  font-family: "share tech mono", monospace;
+  font-size: 1rem;
+  text-decoration: none;
+  text-align: center;
+}
+
+.cactus-editor {
+  font-family: "share tech mono", monospace;
+}
+
+.cactus-login-form {
+  padding: 1rem;
+  border: 1px solid var(--accent);
+  border-radius: 0;
+  margin: 0 auto;
+  margin-bottom: 0.5rem;
+  font-size: 1rem !important;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  width: 50%;
+}
+
+.cactus-login-close {
+  background: var(--background);
+  color: var(---accent);
+  width: min-content;
+  padding: 0.2rem;
+  border: 1px solid var(--accent);
+  border-radius: 0;
+  align-self: flex-end;
+  margin: 0;
+}
+
+.cactus-login-close-icon {
+  fill: var(--accent) !important;
+  color: var(--accent);
+  height: 1rem;
+  width: 1rem;
+}
+
+.cactus-login-credentials-title,
+.cactus-login-client-title,
+.cactus-login-title {
+  margin: 0;
+  font-size: 1rem !important;
+  margin-top: 0 !important;
+  font-family: "share tech mono", monospace !important;
+}
+
+.cactus-login-title {
+  text-align: center;
+  font-size: 1.2rem !important;
+}
+
+.cactus-login-credentials,
+.cactus-login-client {
+  gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.cactus-login-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.cactus-login-error {
+  margin: 0;
+}
+
+.cactus-comments-list {
+  margin-top: 0.5rem;
+}
+
+.cactus-comment:not(:last-child):not(:first-child) {
+  margin: 0.5rem 0;
+  padding: 0.5rem 0;
+}
+
+.cactus-comment:not(:last-child) {
+  border-bottom: 1px solid var(--accent);
+}
+
+.cactus-message-text > a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.cactus-message-text > p {
+  margin: 0;
+}
+
+.cactus-comment-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cactus-comment-header > .cactus-comment-displayname {
+  color: var(--accent);
+  text-decoration: none;
+  padding: 0 0.2rem;
+  background-color: hsla(24, 20%, 50%, .4);
+}
+
+div.cactus-comment-content > div.cactus-comment-body > div > div > blockquote {
+  padding: 0.5rem !important;
+  margin: 0;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-left: 1rem;
+  border: none;
+  border-left: 1px solid var(--accent);
 }
