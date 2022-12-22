@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
 :root {
   --cactus-error-color: #ff6266;
+  --bg-accent: hsla(24, 20%, 50%, 0.4);
+  --accent: #ffa86a;
+  --background: #222129;
 }
 
 body {
@@ -19,10 +22,8 @@ body {
 .cactus-editor-textarea,
 .cactus-editor-name > span > input[type="text"],
 .cactus-login-field > input {
-  background: var(--background);
   color: var(--color);
   padding: 0.5rem;
-  border: 1px solid var(--accent);
 }
 
 .cactus-editor-below {
@@ -32,7 +33,7 @@ body {
   justify-content: space-between;
 }
 
-.cactus-button {
+button.cactus-button {
   background: var(--accent);
   color: var(--background);
   border-radius: 0;
@@ -138,11 +139,11 @@ body {
   justify-content: space-between;
 }
 
-.cactus-comment-header > .cactus-comment-displayname {
-  color: var(--accent);
+.cactus-comment-header > a.cactus-comment-displayname {
+  background-color: var(--accent);
   text-decoration: none;
   padding: 0 0.2rem;
-  background-color: hsla(24, 20%, 50%, .4);
+  color: var(--background);
 }
 
 div.cactus-comment-content > div.cactus-comment-body > div > div > blockquote {
@@ -153,4 +154,9 @@ div.cactus-comment-content > div.cactus-comment-body > div > div > blockquote {
   margin-left: 1rem;
   border: none;
   border-left: 1px solid var(--accent);
+}
+
+div.cactus-editor-buttons {
+  display: flex;
+  gap: 0.5rem;
 }
