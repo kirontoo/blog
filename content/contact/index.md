@@ -23,4 +23,4 @@ Keep in touch by following my [RSS feed](https://blog.rxkiro.xyz/index.xml)
 
 ## Work
 
-Check out the thing's I've worked on [rxkiro.xyz](https://rxkiro.xyz)
+Check out the things I've worked on [rxkiro.xyz](https://rxkiro.xyz)
