@@ -20,5 +20,13 @@ initComments({
     siteName: "{{ site.Params.cactusCommentsSiteName }}",
     commentSectionId: "{{ .File.UniqueID }}"
 })
+
+const cactusBtns = document.getElementsByClassName("cactus-button");
+for(let i = 0; i < cactusBtns.length; i++ ) {
+    cactusBtns[i].classList.add('button');
+}
+
+const cactusComment = document.getElementsByClassName("cactus-editor-textarea")[0];
+cactusComment.rows = 7;
 </script>
 {{ end }}
