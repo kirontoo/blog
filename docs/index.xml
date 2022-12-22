@@ -1,229 +1,175 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Kironto</title>
-    <link>https://blog.rxkiro.xyz/</link>
-    <description>Recent content on Kironto</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Wed, 30 Mar 2022 14:16:28 -0700</lastBuildDate><atom:link href="https://blog.rxkiro.xyz/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Contact Me</title>
-      <link>https://blog.rxkiro.xyz/contact/</link>
-      <pubDate>Tue, 20 Dec 2022 19:16:28 -0700</pubDate>
-      
-      <guid>https://blog.rxkiro.xyz/contact/</guid>
-      <description>Email You can email me at ndangamy@gmail.com
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kironto</title><link>https://blog.rxkiro.xyz/</link><description>Recent content on Kironto</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright><lastBuildDate>Wed, 30 Mar 2022 14:16:28 -0700</lastBuildDate><atom:link href="https://blog.rxkiro.xyz/index.xml" rel="self" type="application/rss+xml"/><item><title>Behold... Comments</title><link>https://blog.rxkiro.xyz/posts/behold-comments/</link><pubDate>Wed, 21 Dec 2022 20:04:15 -0800</pubDate><guid>https://blog.rxkiro.xyz/posts/behold-comments/</guid><description>Look! I finally added comments!
+There were many options that I could&amp;rsquo;ve gone with for this blog but in the end I decided to go with cactus comments. From reading the docs, cactus seemed REALLY easy to set up with Hugo, and it was! The docs were quite straight forward and everything worked as intended. Styling the comments to blend in with the theme took forever, but it was quite fun.</description><content>&lt;p>Look! I finally added comments!&lt;/p>
+&lt;p>There were many options that I could&amp;rsquo;ve gone with for this blog but in the end
+I decided to go with &lt;a href="https://cactus.chat">cactus comments&lt;/a>.
+From reading the docs, cactus seemed REALLY easy to set up with Hugo, and it was!
+The docs were quite straight forward and everything worked as intended.
+Styling the comments to blend in with the theme took forever, but it was quite fun.&lt;/p></content></item><item><title>Contact Me</title><link>https://blog.rxkiro.xyz/contact/</link><pubDate>Tue, 20 Dec 2022 19:16:28 -0700</pubDate><guid>https://blog.rxkiro.xyz/contact/</guid><description>Email You can email me at ndangamy@gmail.com
 Social Media:
 github twitter linkedin RSS Keep in touch by following my RSS feed
-Work Check out the thing&amp;rsquo;s I&amp;rsquo;ve worked on rxkiro.xyz</description>
-      <content>&lt;h2 id=&#34;email&#34;&gt;Email&lt;/h2&gt;
-&lt;p&gt;You can email me at &lt;a href=&#34;mailto:ndangamy@gmail.com&#34;&gt;ndangamy@gmail.com&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Social Media:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/kirontoo&#34;&gt;github&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://twitter.com/rxkironto&#34;&gt;twitter&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.linkedin.com/in/amyndang&#34;&gt;linkedin&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;rss&#34;&gt;RSS&lt;/h2&gt;
-&lt;p&gt;Keep in touch by following my &lt;a href=&#34;https://blog.rxkiro.xyz/index.xml&#34;&gt;RSS feed&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;work&#34;&gt;Work&lt;/h2&gt;
-&lt;p&gt;Check out the thing&amp;rsquo;s I&amp;rsquo;ve worked on &lt;a href=&#34;https://rxkiro.xyz&#34;&gt;rxkiro.xyz&lt;/a&gt;&lt;/p&gt;
-</content>
-    </item>
-    
-    <item>
-      <title>Audio Splitting in Linux</title>
-      <link>https://blog.rxkiro.xyz/posts/audio-splitting-in-linux/</link>
-      <pubDate>Tue, 24 May 2022 12:50:35 -0700</pubDate>
-      
-      <guid>https://blog.rxkiro.xyz/posts/audio-splitting-in-linux/</guid>
-      <description>Pre-Requisites You&amp;rsquo;ll need to have both pulseaudio and pavucontrol installed on your system
-Install For Ubuntu sudo apt-get pulseaudio pavucontrol Install For Arch pacman -S pulseaudio pavucontrol # OR yay -S pulseaudio pavucontrol Setting up a new audio sink Make a new directory called .pulse in your home directory, this is the default pulseaudio config folder. Note that depending on your OS, the default pulseaudio directory could be in a different path or different folder name.</description>
-      <content>&lt;h2 id=&#34;pre-requisites&#34;&gt;Pre-Requisites&lt;/h2&gt;
-&lt;p&gt;You&amp;rsquo;ll need to have both &lt;code&gt;pulseaudio&lt;/code&gt; and &lt;code&gt;pavucontrol&lt;/code&gt; installed on your system&lt;/p&gt;
-&lt;h3 id=&#34;install-for-ubuntu&#34;&gt;Install For Ubuntu&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt-get pulseaudio pavucontrol
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;install-for-arch&#34;&gt;Install For Arch&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pacman -S pulseaudio pavucontrol
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# OR&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;yay -S pulseaudio pavucontrol
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;setting-up-a-new-audio-sink&#34;&gt;Setting up a new audio sink&lt;/h2&gt;
-&lt;p&gt;Make a new directory called &lt;code&gt;.pulse&lt;/code&gt; in your home directory, this is the default &lt;code&gt;pulseaudio&lt;/code&gt; config folder.
-&lt;strong&gt;Note&lt;/strong&gt; that depending on your OS, the default &lt;code&gt;pulseaudio&lt;/code&gt; directory could be in a different path or different folder name. Check your &lt;code&gt;man&lt;/code&gt; pages with &lt;code&gt;man pulseaudio&lt;/code&gt;.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; mkdir ~/.pulse
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Copy the default &lt;code&gt;pulseaudio&lt;/code&gt; config, &lt;code&gt;default.pa&lt;/code&gt;, into the new folder.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cp /etc/pulse/default.pa ~/.pulse/
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Make sure the new file is in your directory&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ls -la ~/.pulse
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Next, you need to find all of your current audio sinks:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pacmd list-sinks | grep -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;index:&amp;#39;&lt;/span&gt; -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;name:&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This will show all of your audio output devices. Your output should look something like this:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;    index: 0
- name: &amp;lt;alsa_output.pci-0000_01_00.1.hdmi-stereo&amp;gt;
-  * index: 1
- name: &amp;lt;alsa_output.usb-Razer_Razer_Kraken_7.1_V2_00000000-00.analog-stereo&amp;gt;
-    index: 2
- name: &amp;lt;alsa_output.pci-0000_00_1f.3.analog-stereo&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The &lt;code&gt;*&lt;/code&gt; symbol shows your currently active audio output.&lt;/p&gt;
-&lt;p&gt;Copy the audio output you want to direct audio towards. For me, I want to be able to send all audio source I&amp;rsquo;m monitoring to my headset.
-So I would copy &lt;code&gt;alsa_output.usb-Razer_Razer_Kraken_7.1_V2_00000000-00.analog-stereo&lt;/code&gt;.
-Paste this in a empty text document. You&amp;rsquo;ll need this info later.&lt;/p&gt;
-&lt;p&gt;Next, you&amp;rsquo;ll want to make a dummy audio sink. To do this, open up
-&lt;code&gt;~/.pulse/default.pa&lt;/code&gt; in a text editor. Go all the way to the bottom of the document and use this template to define your new audio sink.&lt;/p&gt;
-&lt;p&gt;Here is a template that you can use:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;load-module module-null-sink sink_name=channelname
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;update-sink-proplist channelname device.description=&amp;#34;channelname Audio&amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;update-source-proplist channelname.monitor device.description=&amp;#39;Monitor of channelname Audio&amp;#39;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;load-module module-loopback source=channelname.monitor sink=outputdevicename latency_msec=1
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Replace &lt;code&gt;channelname&lt;/code&gt; with your audio sink name, then replace &lt;code&gt;outputdevicename&lt;/code&gt; with the audio output device we copied earlier.&lt;/p&gt;
-&lt;h3 id=&#34;example&#34;&gt;Example&lt;/h3&gt;
-&lt;p&gt;I used this to better control which audio source I want to be streamed on twitch through OBS but still be able to monitor and hear everything.
-Here&amp;rsquo;s what my &lt;code&gt;default.pa&lt;/code&gt; looks like&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;load-module module-null-sink sink_name=twitchaudio
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;update-sink-proplist twitchaudio device.description=&amp;#39;Twitch Streaming Audio&amp;#39;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;update-source-proplist twitchaudio.monitor device.description=&amp;#39;Monitor of Twitch Audio&amp;#39;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;load-module module-loopback source=twitchaudio.monitor sink=alsa_output.usb-Razer_Razer_Kraken_7.1_V2_00000000-00.analog-stereo latency_msec=1
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;restart-pulseaudio-and-all-of-your-apps&#34;&gt;Restart Pulseaudio And All Of Your Apps&lt;/h2&gt;
-&lt;p&gt;After you&amp;rsquo;re done making custom audio sinks, make sure to restart &lt;code&gt;pulseaudio&lt;/code&gt; using this command:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pulseaudio --kill
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This should automatically restart &lt;code&gt;pulseaudio&lt;/code&gt;, but if it doesn&amp;rsquo;t, you can manually start it with:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pulseaudio --start
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After restarting &lt;code&gt;pulseaudio&lt;/code&gt;, you&amp;rsquo;ll find that there&amp;rsquo;s no audio. You&amp;rsquo;ll need to restart all your apps that streams audio to your speakers.&lt;/p&gt;
-&lt;h2 id=&#34;pulseaudio-volume-control-app-pavucontrol&#34;&gt;Pulseaudio Volume Control App (pavucontrol)&lt;/h2&gt;
-&lt;p&gt;From here launch &lt;code&gt;pavucontrol&lt;/code&gt; and you&amp;rsquo;ll be able to see your new audio sink in the &lt;code&gt;recording, playback, and output devices&lt;/code&gt; tabs. `
-This app will let you control where you want all of your audio sources to be directed to.&lt;/p&gt;
-&lt;h2 id=&#34;misc&#34;&gt;Misc&lt;/h2&gt;
-&lt;p&gt;For more info, check out the arch wiki page: &lt;a href=&#34;https://wiki.archlinux.org/title/PulseAudio/Examples#Remapping_sinks&#34;&gt;wiki.archlinux.org&lt;/a&gt;&lt;/p&gt;
-</content>
-    </item>
-    
-    <item>
-      <title>Hello World.</title>
-      <link>https://blog.rxkiro.xyz/whoami/</link>
-      <pubDate>Wed, 30 Mar 2022 11:04:29 -0700</pubDate>
-      
-      <guid>https://blog.rxkiro.xyz/whoami/</guid>
-      <description>Hey there! I&amp;rsquo;m Amy, a frontend developer who loves mechanical keyboards and learning new things.
+Work Check out the things I&amp;rsquo;ve worked on rxkiro.xyz</description><content>&lt;h2 id="email">Email&lt;/h2>
+&lt;p>You can email me at &lt;a href="mailto:ndangamy@gmail.com">ndangamy@gmail.com&lt;/a>&lt;/p>
+&lt;p>Social Media:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/kirontoo">github&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://twitter.com/rxkironto">twitter&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.linkedin.com/in/amyndang">linkedin&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="rss">RSS&lt;/h2>
+&lt;p>Keep in touch by following my &lt;a href="https://blog.rxkiro.xyz/index.xml">RSS feed&lt;/a>&lt;/p>
+&lt;h2 id="work">Work&lt;/h2>
+&lt;p>Check out the things I&amp;rsquo;ve worked on &lt;a href="https://rxkiro.xyz">rxkiro.xyz&lt;/a>&lt;/p></content></item><item><title>Audio Splitting in Linux</title><link>https://blog.rxkiro.xyz/posts/audio-splitting-in-linux/</link><pubDate>Tue, 24 May 2022 12:50:35 -0700</pubDate><guid>https://blog.rxkiro.xyz/posts/audio-splitting-in-linux/</guid><description>Pre-Requisites You&amp;rsquo;ll need to have both pulseaudio and pavucontrol installed on your system
+Install For Ubuntu sudo apt-get pulseaudio pavucontrol Install For Arch pacman -S pulseaudio pavucontrol # OR yay -S pulseaudio pavucontrol Setting up a new audio sink Make a new directory called .pulse in your home directory, this is the default pulseaudio config folder. Note that depending on your OS, the default pulseaudio directory could be in a different path or different folder name.</description><content>&lt;h2 id="pre-requisites">Pre-Requisites&lt;/h2>
+&lt;p>You&amp;rsquo;ll need to have both &lt;code>pulseaudio&lt;/code> and &lt;code>pavucontrol&lt;/code> installed on your system&lt;/p>
+&lt;h3 id="install-for-ubuntu">Install For Ubuntu&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo apt-get pulseaudio pavucontrol
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="install-for-arch">Install For Arch&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>pacman -S pulseaudio pavucontrol
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># OR&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>yay -S pulseaudio pavucontrol
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="setting-up-a-new-audio-sink">Setting up a new audio sink&lt;/h2>
+&lt;p>Make a new directory called &lt;code>.pulse&lt;/code> in your home directory, this is the default &lt;code>pulseaudio&lt;/code> config folder.
+&lt;strong>Note&lt;/strong> that depending on your OS, the default &lt;code>pulseaudio&lt;/code> directory could be in a different path or different folder name. Check your &lt;code>man&lt;/code> pages with &lt;code>man pulseaudio&lt;/code>.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span> mkdir ~/.pulse
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Copy the default &lt;code>pulseaudio&lt;/code> config, &lt;code>default.pa&lt;/code>, into the new folder.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>cp /etc/pulse/default.pa ~/.pulse/
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Make sure the new file is in your directory&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>ls -la ~/.pulse
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Next, you need to find all of your current audio sinks:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>pacmd list-sinks | grep -e &lt;span style="color:#e6db74">&amp;#39;index:&amp;#39;&lt;/span> -e &lt;span style="color:#e6db74">&amp;#39;name:&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This will show all of your audio output devices. Your output should look something like this:&lt;/p>
+&lt;pre tabindex="0">&lt;code> index: 0
+name: &amp;lt;alsa_output.pci-0000_01_00.1.hdmi-stereo&amp;gt;
+* index: 1
+name: &amp;lt;alsa_output.usb-Razer_Razer_Kraken_7.1_V2_00000000-00.analog-stereo&amp;gt;
+index: 2
+name: &amp;lt;alsa_output.pci-0000_00_1f.3.analog-stereo&amp;gt;
+&lt;/code>&lt;/pre>&lt;p>The &lt;code>*&lt;/code> symbol shows your currently active audio output.&lt;/p>
+&lt;p>Copy the audio output you want to direct audio towards. For me, I want to be able to send all audio source I&amp;rsquo;m monitoring to my headset.
+So I would copy &lt;code>alsa_output.usb-Razer_Razer_Kraken_7.1_V2_00000000-00.analog-stereo&lt;/code>.
+Paste this in a empty text document. You&amp;rsquo;ll need this info later.&lt;/p>
+&lt;p>Next, you&amp;rsquo;ll want to make a dummy audio sink. To do this, open up
+&lt;code>~/.pulse/default.pa&lt;/code> in a text editor. Go all the way to the bottom of the document and use this template to define your new audio sink.&lt;/p>
+&lt;p>Here is a template that you can use:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>load-module module-null-sink sink_name=channelname
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>update-sink-proplist channelname device.description=&amp;#34;channelname Audio&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>update-source-proplist channelname.monitor device.description=&amp;#39;Monitor of channelname Audio&amp;#39;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>load-module module-loopback source=channelname.monitor sink=outputdevicename latency_msec=1
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Replace &lt;code>channelname&lt;/code> with your audio sink name, then replace &lt;code>outputdevicename&lt;/code> with the audio output device we copied earlier.&lt;/p>
+&lt;h3 id="example">Example&lt;/h3>
+&lt;p>I used this to better control which audio source I want to be streamed on twitch through OBS but still be able to monitor and hear everything.
+Here&amp;rsquo;s what my &lt;code>default.pa&lt;/code> looks like&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>load-module module-null-sink sink_name=twitchaudio
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>update-sink-proplist twitchaudio device.description=&amp;#39;Twitch Streaming Audio&amp;#39;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>update-source-proplist twitchaudio.monitor device.description=&amp;#39;Monitor of Twitch Audio&amp;#39;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>load-module module-loopback source=twitchaudio.monitor sink=alsa_output.usb-Razer_Razer_Kraken_7.1_V2_00000000-00.analog-stereo latency_msec=1
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="restart-pulseaudio-and-all-of-your-apps">Restart Pulseaudio And All Of Your Apps&lt;/h2>
+&lt;p>After you&amp;rsquo;re done making custom audio sinks, make sure to restart &lt;code>pulseaudio&lt;/code> using this command:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>pulseaudio --kill
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This should automatically restart &lt;code>pulseaudio&lt;/code>, but if it doesn&amp;rsquo;t, you can manually start it with:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>pulseaudio --start
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>After restarting &lt;code>pulseaudio&lt;/code>, you&amp;rsquo;ll find that there&amp;rsquo;s no audio. You&amp;rsquo;ll need to restart all your apps that streams audio to your speakers.&lt;/p>
+&lt;h2 id="pulseaudio-volume-control-app-pavucontrol">Pulseaudio Volume Control App (pavucontrol)&lt;/h2>
+&lt;p>From here launch &lt;code>pavucontrol&lt;/code> and you&amp;rsquo;ll be able to see your new audio sink in the &lt;code>recording, playback, and output devices&lt;/code> tabs. `
+This app will let you control where you want all of your audio sources to be directed to.&lt;/p>
+&lt;h2 id="misc">Misc&lt;/h2>
+&lt;p>For more info, check out the arch wiki page: &lt;a href="https://wiki.archlinux.org/title/PulseAudio/Examples#Remapping_sinks">wiki.archlinux.org&lt;/a>&lt;/p></content></item><item><title>Hello World.</title><link>https://blog.rxkiro.xyz/whoami/</link><pubDate>Wed, 30 Mar 2022 11:04:29 -0700</pubDate><guid>https://blog.rxkiro.xyz/whoami/</guid><description>Hey there! I&amp;rsquo;m Amy, a frontend developer who loves mechanical keyboards and learning new things.
 This blog will pretty much be me documenting things I find interesting, new things that I&amp;rsquo;ve learned. No idea how often I will post but meh.
-You can check out the things I&amp;rsquo;ve worked on at rxkiro.xyz. And you can click here to find out how to contact me.</description>
-      <content>&lt;p&gt;Hey there! I&amp;rsquo;m Amy, a frontend developer who loves mechanical keyboards and
-learning new things.&lt;/p&gt;
-&lt;p&gt;This blog will pretty much be me documenting things I find
-interesting, new things that I&amp;rsquo;ve learned. No idea how often I will post but meh.&lt;/p&gt;
-&lt;p&gt;You can check out the things I&amp;rsquo;ve worked on at &lt;a href=&#34;https://rxkiro.xyz/&#34;&gt;rxkiro.xyz&lt;/a&gt;.
-And you can &lt;a href=&#34;https://blog.rxkiro.xyz/contact/&#34;&gt;click here&lt;/a&gt; to find out how to contact me.&lt;/p&gt;
-</content>
-    </item>
-    
-    <item>
-      <title>Git: Removing Untracked Files</title>
-      <link>https://blog.rxkiro.xyz/posts/remove-untracked-files/</link>
-      <pubDate>Mon, 21 Mar 2022 10:23:29 -0700</pubDate>
-      
-      <guid>https://blog.rxkiro.xyz/posts/remove-untracked-files/</guid>
-      <description>git clean -fdx -f - force
+You can check out the things I&amp;rsquo;ve worked on at rxkiro.xyz. And you can click here to find out how to contact me.
+Current Projects Atlantic Esports</description><content>&lt;p>Hey there! I&amp;rsquo;m Amy, a frontend developer who loves mechanical keyboards and
+learning new things.&lt;/p>
+&lt;p>This blog will pretty much be me documenting things I find
+interesting, new things that I&amp;rsquo;ve learned. No idea how often I will post but meh.&lt;/p>
+&lt;p>You can check out the things I&amp;rsquo;ve worked on at &lt;a href="https://rxkiro.xyz/">rxkiro.xyz&lt;/a>.
+And you can &lt;a href="https://blog.rxkiro.xyz/contact/">click here&lt;/a> to find out how to contact me.&lt;/p>
+&lt;h2 id="current-projects">Current Projects&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://atlanticesportsnj.com">Atlantic Esports&lt;/a>&lt;/li>
+&lt;/ul></content></item><item><title>Git: Removing Untracked Files</title><link>https://blog.rxkiro.xyz/posts/remove-untracked-files/</link><pubDate>Mon, 21 Mar 2022 10:23:29 -0700</pubDate><guid>https://blog.rxkiro.xyz/posts/remove-untracked-files/</guid><description>git clean -fdx -f - force
 -d - include directories
 -x - include ignored files
 !Use with Caution!
-This command will delete files that you haven&amp;rsquo;t thought of. Be careful whenever running a command with -f</description>
-      <content>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git clean -fdx
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;-f - force&lt;/p&gt;
-&lt;p&gt;-d - include directories&lt;/p&gt;
-&lt;p&gt;-x - include ignored files&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;!Use with Caution!&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;This command will delete files that you haven&amp;rsquo;t thought of. Be careful whenever
-running a command with &lt;code&gt;-f&lt;/code&gt;&lt;/p&gt;
-</content>
-    </item>
-    
-    <item>
-      <title>Useful Vim Tricks</title>
-      <link>https://blog.rxkiro.xyz/posts/vim-tricks/</link>
-      <pubDate>Sat, 21 Nov 2020 19:33:51 -0800</pubDate>
-      
-      <guid>https://blog.rxkiro.xyz/posts/vim-tricks/</guid>
-      <description>Append Output Of A External Command To Your Buffer The :read command can insert a file or the output of an external program into the current buffer. To run a program just prefix the shell command with !.
+This command will delete files that you haven&amp;rsquo;t thought of. Be careful whenever running a command with -f</description><content>&lt;pre tabindex="0">&lt;code>git clean -fdx
+&lt;/code>&lt;/pre>&lt;p>-f - force&lt;/p>
+&lt;p>-d - include directories&lt;/p>
+&lt;p>-x - include ignored files&lt;/p>
+&lt;hr>
+&lt;p>&lt;strong>!Use with Caution!&lt;/strong>&lt;/p>
+&lt;p>This command will delete files that you haven&amp;rsquo;t thought of. Be careful whenever
+running a command with &lt;code>-f&lt;/code>&lt;/p></content></item><item><title>Useful Vim Tricks</title><link>https://blog.rxkiro.xyz/posts/vim-tricks/</link><pubDate>Sat, 21 Nov 2020 19:33:51 -0800</pubDate><guid>https://blog.rxkiro.xyz/posts/vim-tricks/</guid><description>Append Output Of A External Command To Your Buffer The :read command can insert a file or the output of an external program into the current buffer. To run a program just prefix the shell command with !.
 Example:
 :read !echo &amp;#34;hello&amp;#34; You can also specify the line you want to output to. Just prefix read with a number and it will output to that line. Example:
-:12read !echo &amp;#34;hello&amp;#34; To output to a certain number of lines before your current line, prefix with - number of lines.</description>
-      <content>&lt;h2 id=&#34;append-output-of-a-external-command-to-your-buffer&#34;&gt;Append Output Of A External Command To Your Buffer&lt;/h2&gt;
-&lt;p&gt;The &lt;code&gt;:read&lt;/code&gt; command can insert a file or the output of an external program into the current buffer.
-To run a program just prefix the shell command with &lt;code&gt;!&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Example:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:&lt;span style=&#34;color:#a6e22e&#34;&gt;read&lt;/span&gt; !&lt;span style=&#34;color:#a6e22e&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;hello&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You can also specify the line you want to output to. Just prefix &lt;code&gt;read&lt;/code&gt; with a number and it will output to that line.
-Example:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:&lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;read !&lt;span style=&#34;color:#a6e22e&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;hello&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;To output to a certain number of lines before your current line, prefix with &lt;code&gt;-&lt;/code&gt; number of lines.
-&lt;code&gt;-&lt;/code&gt; for before.&lt;/p&gt;
-&lt;p&gt;Example:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:&lt;span style=&#34;color:#ae81ff&#34;&gt;-12&lt;/span&gt;read !&lt;span style=&#34;color:#a6e22e&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;hello&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;create-a-new-file-in-the-same-directory-as-the-current-buffer&#34;&gt;Create A New File In The Same Directory As The Current Buffer&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;%:h&lt;/code&gt; will autocomplete the folder path for you. Press &amp;lsquo;&lt;TAB&gt;&amp;rsquo; to autofill the
-full path&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt; %:&lt;span style=&#34;color:#a6e22e&#34;&gt;h&lt;/span&gt;/&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;custom-settings-for-different-filetypes--languages-ftplugin&#34;&gt;Custom Settings For Different Filetypes / Languages: ftplugin&lt;/h2&gt;
-&lt;p&gt;By using the &lt;code&gt;ftplugin&lt;/code&gt; directory, you can apply different settings or keymaps
-for different languages and filetypes.&lt;/p&gt;
-&lt;p&gt;For example: In the &lt;code&gt;$HOME/.config/nvim/ftplugin/javascript.vim&lt;/code&gt; file
-&lt;code&gt;nnoremap ,get     :read $VIMPATH/snippets/js/get.js&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;when you run this keymap, it will pipe the contents of the &lt;code&gt;.js&lt;/code&gt; file into
-your current buffer&lt;/p&gt;
-&lt;h2 id=&#34;sorting&#34;&gt;Sorting&lt;/h2&gt;
-&lt;p&gt;Highlight the lines you want to sort, then run the command: &lt;code&gt;:sort&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Example&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// before
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;banana&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;banana&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;durian&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;durian&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;cantalope&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cantalope&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;apple&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;apple&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// after
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;apple&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;apple&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;banana&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;banana&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;cantalope&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cantalope&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;durian&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;durian&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;columns&#34;&gt;Columns&lt;/h2&gt;
-&lt;p&gt;Highlight (using shift+v) the lines you want, then run the command &lt;code&gt;:!column --table&lt;/code&gt;.
-This will organize the spacing for you.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Example&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// before
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;apple&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;apple&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;banana&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;banana&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;cantalope&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cantalope&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;durian&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;durian&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// after
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;apple&lt;/span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;apple&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;banana&lt;/span&gt;     &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;banana&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;cantalope&lt;/span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cantalope&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;durian&lt;/span&gt;     &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;durian&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;multiple-commands-in-one&#34;&gt;Multiple Commands In One&lt;/h2&gt;
-&lt;p&gt;You can execute multiple commands in one command by separating them with &lt;code&gt;|&lt;/code&gt;.
-Example:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:%&lt;span style=&#34;color:#a6e22e&#34;&gt;s&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;/hello/&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;world&lt;/span&gt; | %&lt;span style=&#34;color:#a6e22e&#34;&gt;s&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;/foo/&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;bar&lt;/span&gt; | %&lt;span style=&#34;color:#a6e22e&#34;&gt;s&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;/hello/&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;goodbye&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;use-case-generating-a-file&#34;&gt;Use Case: Generating A File&lt;/h3&gt;
-&lt;p&gt;Sometimes you just need to quickly create a file with some boilerplate in it,
-to do this you can make vim open and read file, then pipe it into your current buffer.&lt;/p&gt;
-&lt;p&gt;You can create a snippets folder that holds all of your snippets or boilerplate.
-Using these files, I can generate the files I want by combining commands in VIM.&lt;/p&gt;
-&lt;p&gt;Example: I have a snippet file called &lt;code&gt;test.js.&lt;/code&gt; In this file, I have some boilerplate for a
+:12read !echo &amp;#34;hello&amp;#34; To output to a certain number of lines before your current line, prefix with - number of lines.</description><content>&lt;h2 id="append-output-of-a-external-command-to-your-buffer">Append Output Of A External Command To Your Buffer&lt;/h2>
+&lt;p>The &lt;code>:read&lt;/code> command can insert a file or the output of an external program into the current buffer.
+To run a program just prefix the shell command with &lt;code>!&lt;/code>.&lt;/p>
+&lt;p>Example:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-vim" data-lang="vim">&lt;span style="display:flex;">&lt;span>:&lt;span style="color:#a6e22e">read&lt;/span> !&lt;span style="color:#a6e22e">echo&lt;/span> &lt;span style="color:#e6db74">&amp;#34;hello&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>You can also specify the line you want to output to. Just prefix &lt;code>read&lt;/code> with a number and it will output to that line.
+Example:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-vim" data-lang="vim">&lt;span style="display:flex;">&lt;span>:&lt;span style="color:#ae81ff">12&lt;/span>read !&lt;span style="color:#a6e22e">echo&lt;/span> &lt;span style="color:#e6db74">&amp;#34;hello&amp;#34;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>To output to a certain number of lines before your current line, prefix with &lt;code>-&lt;/code> number of lines.
+&lt;code>-&lt;/code> for before.&lt;/p>
+&lt;p>Example:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-vim" data-lang="vim">&lt;span style="display:flex;">&lt;span>:&lt;span style="color:#ae81ff">-12&lt;/span>read !&lt;span style="color:#a6e22e">echo&lt;/span> &lt;span style="color:#e6db74">&amp;#34;hello&amp;#34;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="create-a-new-file-in-the-same-directory-as-the-current-buffer">Create A New File In The Same Directory As The Current Buffer&lt;/h2>
+&lt;p>&lt;code>%:h&lt;/code> will autocomplete the folder path for you. Press &amp;lsquo;&lt;TAB>&amp;rsquo; to autofill the
+full path&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-vim" data-lang="vim">&lt;span style="display:flex;">&lt;span>:&lt;span style="color:#a6e22e">e&lt;/span> %:&lt;span style="color:#a6e22e">h&lt;/span>/&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="custom-settings-for-different-filetypes--languages-ftplugin">Custom Settings For Different Filetypes / Languages: ftplugin&lt;/h2>
+&lt;p>By using the &lt;code>ftplugin&lt;/code> directory, you can apply different settings or keymaps
+for different languages and filetypes.&lt;/p>
+&lt;p>For example: In the &lt;code>$HOME/.config/nvim/ftplugin/javascript.vim&lt;/code> file
+&lt;code>nnoremap ,get :read $VIMPATH/snippets/js/get.js&amp;lt;CR&amp;gt;&lt;/code>&lt;/p>
+&lt;p>when you run this keymap, it will pipe the contents of the &lt;code>.js&lt;/code> file into
+your current buffer&lt;/p>
+&lt;h2 id="sorting">Sorting&lt;/h2>
+&lt;p>Highlight the lines you want to sort, then run the command: &lt;code>:sort&lt;/code>&lt;/p>
+&lt;p>&lt;strong>Example&lt;/strong>:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// before
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">banana&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;banana&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">durian&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;durian&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">cantalope&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;cantalope&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">apple&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;apple&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// after
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">apple&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;apple&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">banana&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;banana&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">cantalope&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;cantalope&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">durian&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;durian&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="columns">Columns&lt;/h2>
+&lt;p>Highlight (using shift+v) the lines you want, then run the command &lt;code>:!column --table&lt;/code>.
+This will organize the spacing for you.&lt;/p>
+&lt;p>&lt;strong>Example&lt;/strong>:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// before
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">apple&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;apple&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">banana&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;banana&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">cantalope&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;cantalope&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">durian&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;durian&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// after
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">apple&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;apple&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">banana&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;banana&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">cantalope&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;cantalope&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">durian&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;durian&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="multiple-commands-in-one">Multiple Commands In One&lt;/h2>
+&lt;p>You can execute multiple commands in one command by separating them with &lt;code>|&lt;/code>.
+Example:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-vim" data-lang="vim">&lt;span style="display:flex;">&lt;span>:%&lt;span style="color:#a6e22e">s&lt;/span>&lt;span style="color:#e6db74">/hello/&lt;/span>&lt;span style="color:#a6e22e">world&lt;/span> | %&lt;span style="color:#a6e22e">s&lt;/span>&lt;span style="color:#e6db74">/foo/&lt;/span>&lt;span style="color:#a6e22e">bar&lt;/span> | %&lt;span style="color:#a6e22e">s&lt;/span>&lt;span style="color:#e6db74">/hello/&lt;/span>&lt;span style="color:#a6e22e">goodbye&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="use-case-generating-a-file">Use Case: Generating A File&lt;/h3>
+&lt;p>Sometimes you just need to quickly create a file with some boilerplate in it,
+to do this you can make vim open and read file, then pipe it into your current buffer.&lt;/p>
+&lt;p>You can create a snippets folder that holds all of your snippets or boilerplate.
+Using these files, I can generate the files I want by combining commands in VIM.&lt;/p>
+&lt;p>Example: I have a snippet file called &lt;code>test.js.&lt;/code> In this file, I have some boilerplate for a
 test file for a nodejs project. In any given project, I can generate a new test file in the same directory as
-my current buffer is in using:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt; %:&lt;span style=&#34;color:#a6e22e&#34;&gt;h&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;/mytest.test.js | read /&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;path&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;/to/&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;snippet&lt;/span&gt;/&lt;span style=&#34;color:#a6e22e&#34;&gt;test&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;js&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;windows&#34;&gt;Windows&lt;/h2&gt;
-&lt;h3 id=&#34;hiding-windows&#34;&gt;Hiding Windows&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;noremap&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;leader&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;hh&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;C&lt;/span&gt;-&lt;span style=&#34;color:#a6e22e&#34;&gt;w&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;h&lt;/span&gt;:&lt;span style=&#34;color:#a6e22e&#34;&gt;hide&lt;/span&gt;&amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;CR&lt;/span&gt;&amp;gt;	&lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; hide the left window&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;noremap&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;leader&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;hj&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;C&lt;/span&gt;-&lt;span style=&#34;color:#a6e22e&#34;&gt;w&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;j&lt;/span&gt;:&lt;span style=&#34;color:#a6e22e&#34;&gt;hide&lt;/span&gt;&amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;CR&lt;/span&gt;&amp;gt;	&lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; hide the bottom window&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;noremap&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;leader&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;hk&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;C&lt;/span&gt;-&lt;span style=&#34;color:#a6e22e&#34;&gt;w&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;k&lt;/span&gt;:&lt;span style=&#34;color:#a6e22e&#34;&gt;hide&lt;/span&gt;&amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;CR&lt;/span&gt;&amp;gt;	&lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; hide the top window&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;noremap&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;leader&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;hl&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;C&lt;/span&gt;-&lt;span style=&#34;color:#a6e22e&#34;&gt;w&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;l&lt;/span&gt;:&lt;span style=&#34;color:#a6e22e&#34;&gt;hide&lt;/span&gt;&amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;CR&lt;/span&gt;&amp;gt;	&lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; hide the right window&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
-    </item>
-    
-  </channel>
-</rss>
+my current buffer is in using:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-vim" data-lang="vim">&lt;span style="display:flex;">&lt;span>:&lt;span style="color:#a6e22e">e&lt;/span> %:&lt;span style="color:#a6e22e">h&lt;/span>&lt;span style="color:#e6db74">/mytest.test.js | read /&lt;/span>&lt;span style="color:#a6e22e">path&lt;/span>&lt;span style="color:#e6db74">/to/&lt;/span>&lt;span style="color:#a6e22e">snippet&lt;/span>/&lt;span style="color:#a6e22e">test&lt;/span>.&lt;span style="color:#a6e22e">js&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="windows">Windows&lt;/h2>
+&lt;h3 id="hiding-windows">Hiding Windows&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-vim" data-lang="vim">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">noremap&lt;/span> &amp;lt;&lt;span style="color:#a6e22e">leader&lt;/span>&amp;gt;&lt;span style="color:#a6e22e">hh&lt;/span> &amp;lt;&lt;span style="color:#a6e22e">C&lt;/span>-&lt;span style="color:#a6e22e">w&lt;/span>&amp;gt;&lt;span style="color:#a6e22e">h&lt;/span>:&lt;span style="color:#a6e22e">hide&lt;/span>&amp;lt;&lt;span style="color:#a6e22e">CR&lt;/span>&amp;gt; &lt;span style="color:#75715e">&amp;#34; hide the left window&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span>&lt;span style="color:#a6e22e">noremap&lt;/span> &amp;lt;&lt;span style="color:#a6e22e">leader&lt;/span>&amp;gt;&lt;span style="color:#a6e22e">hj&lt;/span> &amp;lt;&lt;span style="color:#a6e22e">C&lt;/span>-&lt;span style="color:#a6e22e">w&lt;/span>&amp;gt;&lt;span style="color:#a6e22e">j&lt;/span>:&lt;span style="color:#a6e22e">hide&lt;/span>&amp;lt;&lt;span style="color:#a6e22e">CR&lt;/span>&amp;gt; &lt;span style="color:#75715e">&amp;#34; hide the bottom window&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span>&lt;span style="color:#a6e22e">noremap&lt;/span> &amp;lt;&lt;span style="color:#a6e22e">leader&lt;/span>&amp;gt;&lt;span style="color:#a6e22e">hk&lt;/span> &amp;lt;&lt;span style="color:#a6e22e">C&lt;/span>-&lt;span style="color:#a6e22e">w&lt;/span>&amp;gt;&lt;span style="color:#a6e22e">k&lt;/span>:&lt;span style="color:#a6e22e">hide&lt;/span>&amp;lt;&lt;span style="color:#a6e22e">CR&lt;/span>&amp;gt; &lt;span style="color:#75715e">&amp;#34; hide the top window&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span>&lt;span style="color:#a6e22e">noremap&lt;/span> &amp;lt;&lt;span style="color:#a6e22e">leader&lt;/span>&amp;gt;&lt;span style="color:#a6e22e">hl&lt;/span> &amp;lt;&lt;span style="color:#a6e22e">C&lt;/span>-&lt;span style="color:#a6e22e">w&lt;/span>&amp;gt;&lt;span style="color:#a6e22e">l&lt;/span>:&lt;span style="color:#a6e22e">hide&lt;/span>&amp;lt;&lt;span style="color:#a6e22e">CR&lt;/span>&amp;gt; &lt;span style="color:#75715e">&amp;#34; hide the right window&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></content></item></channel></rss>

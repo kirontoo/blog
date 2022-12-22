@@ -1,80 +1,58 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>firebase on Kironto</title>
-    <link>https://blog.rxkiro.xyz/tags/firebase/</link>
-    <description>Recent content in firebase on Kironto</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Tue, 24 May 2022 12:50:35 -0700</lastBuildDate><atom:link href="https://blog.rxkiro.xyz/tags/firebase/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Audio Splitting in Linux</title>
-      <link>https://blog.rxkiro.xyz/posts/audio-splitting-in-linux/</link>
-      <pubDate>Tue, 24 May 2022 12:50:35 -0700</pubDate>
-      
-      <guid>https://blog.rxkiro.xyz/posts/audio-splitting-in-linux/</guid>
-      <description>Pre-Requisites You&amp;rsquo;ll need to have both pulseaudio and pavucontrol installed on your system
-Install For Ubuntu sudo apt-get pulseaudio pavucontrol Install For Arch pacman -S pulseaudio pavucontrol # OR yay -S pulseaudio pavucontrol Setting up a new audio sink Make a new directory called .pulse in your home directory, this is the default pulseaudio config folder. Note that depending on your OS, the default pulseaudio directory could be in a different path or different folder name.</description>
-      <content>&lt;h2 id=&#34;pre-requisites&#34;&gt;Pre-Requisites&lt;/h2&gt;
-&lt;p&gt;You&amp;rsquo;ll need to have both &lt;code&gt;pulseaudio&lt;/code&gt; and &lt;code&gt;pavucontrol&lt;/code&gt; installed on your system&lt;/p&gt;
-&lt;h3 id=&#34;install-for-ubuntu&#34;&gt;Install For Ubuntu&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt-get pulseaudio pavucontrol
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;install-for-arch&#34;&gt;Install For Arch&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pacman -S pulseaudio pavucontrol
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# OR&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;yay -S pulseaudio pavucontrol
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;setting-up-a-new-audio-sink&#34;&gt;Setting up a new audio sink&lt;/h2&gt;
-&lt;p&gt;Make a new directory called &lt;code&gt;.pulse&lt;/code&gt; in your home directory, this is the default &lt;code&gt;pulseaudio&lt;/code&gt; config folder.
-&lt;strong&gt;Note&lt;/strong&gt; that depending on your OS, the default &lt;code&gt;pulseaudio&lt;/code&gt; directory could be in a different path or different folder name. Check your &lt;code&gt;man&lt;/code&gt; pages with &lt;code&gt;man pulseaudio&lt;/code&gt;.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; mkdir ~/.pulse
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Copy the default &lt;code&gt;pulseaudio&lt;/code&gt; config, &lt;code&gt;default.pa&lt;/code&gt;, into the new folder.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cp /etc/pulse/default.pa ~/.pulse/
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Make sure the new file is in your directory&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ls -la ~/.pulse
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Next, you need to find all of your current audio sinks:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pacmd list-sinks | grep -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;index:&amp;#39;&lt;/span&gt; -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;name:&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This will show all of your audio output devices. Your output should look something like this:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;    index: 0
- name: &amp;lt;alsa_output.pci-0000_01_00.1.hdmi-stereo&amp;gt;
-  * index: 1
- name: &amp;lt;alsa_output.usb-Razer_Razer_Kraken_7.1_V2_00000000-00.analog-stereo&amp;gt;
-    index: 2
- name: &amp;lt;alsa_output.pci-0000_00_1f.3.analog-stereo&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The &lt;code&gt;*&lt;/code&gt; symbol shows your currently active audio output.&lt;/p&gt;
-&lt;p&gt;Copy the audio output you want to direct audio towards. For me, I want to be able to send all audio source I&amp;rsquo;m monitoring to my headset.
-So I would copy &lt;code&gt;alsa_output.usb-Razer_Razer_Kraken_7.1_V2_00000000-00.analog-stereo&lt;/code&gt;.
-Paste this in a empty text document. You&amp;rsquo;ll need this info later.&lt;/p&gt;
-&lt;p&gt;Next, you&amp;rsquo;ll want to make a dummy audio sink. To do this, open up
-&lt;code&gt;~/.pulse/default.pa&lt;/code&gt; in a text editor. Go all the way to the bottom of the document and use this template to define your new audio sink.&lt;/p&gt;
-&lt;p&gt;Here is a template that you can use:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;load-module module-null-sink sink_name=channelname
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;update-sink-proplist channelname device.description=&amp;#34;channelname Audio&amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;update-source-proplist channelname.monitor device.description=&amp;#39;Monitor of channelname Audio&amp;#39;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;load-module module-loopback source=channelname.monitor sink=outputdevicename latency_msec=1
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Replace &lt;code&gt;channelname&lt;/code&gt; with your audio sink name, then replace &lt;code&gt;outputdevicename&lt;/code&gt; with the audio output device we copied earlier.&lt;/p&gt;
-&lt;h3 id=&#34;example&#34;&gt;Example&lt;/h3&gt;
-&lt;p&gt;I used this to better control which audio source I want to be streamed on twitch through OBS but still be able to monitor and hear everything.
-Here&amp;rsquo;s what my &lt;code&gt;default.pa&lt;/code&gt; looks like&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;load-module module-null-sink sink_name=twitchaudio
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;update-sink-proplist twitchaudio device.description=&amp;#39;Twitch Streaming Audio&amp;#39;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;update-source-proplist twitchaudio.monitor device.description=&amp;#39;Monitor of Twitch Audio&amp;#39;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;load-module module-loopback source=twitchaudio.monitor sink=alsa_output.usb-Razer_Razer_Kraken_7.1_V2_00000000-00.analog-stereo latency_msec=1
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;restart-pulseaudio-and-all-of-your-apps&#34;&gt;Restart Pulseaudio And All Of Your Apps&lt;/h2&gt;
-&lt;p&gt;After you&amp;rsquo;re done making custom audio sinks, make sure to restart &lt;code&gt;pulseaudio&lt;/code&gt; using this command:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pulseaudio --kill
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This should automatically restart &lt;code&gt;pulseaudio&lt;/code&gt;, but if it doesn&amp;rsquo;t, you can manually start it with:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pulseaudio --start
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After restarting &lt;code&gt;pulseaudio&lt;/code&gt;, you&amp;rsquo;ll find that there&amp;rsquo;s no audio. You&amp;rsquo;ll need to restart all your apps that streams audio to your speakers.&lt;/p&gt;
-&lt;h2 id=&#34;pulseaudio-volume-control-app-pavucontrol&#34;&gt;Pulseaudio Volume Control App (pavucontrol)&lt;/h2&gt;
-&lt;p&gt;From here launch &lt;code&gt;pavucontrol&lt;/code&gt; and you&amp;rsquo;ll be able to see your new audio sink in the &lt;code&gt;recording, playback, and output devices&lt;/code&gt; tabs. `
-This app will let you control where you want all of your audio sources to be directed to.&lt;/p&gt;
-&lt;h2 id=&#34;misc&#34;&gt;Misc&lt;/h2&gt;
-&lt;p&gt;For more info, check out the arch wiki page: &lt;a href=&#34;https://wiki.archlinux.org/title/PulseAudio/Examples#Remapping_sinks&#34;&gt;wiki.archlinux.org&lt;/a&gt;&lt;/p&gt;
-</content>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>firebase on Kironto</title><link>https://blog.rxkiro.xyz/tags/firebase/</link><description>Recent content in firebase on Kironto</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright><lastBuildDate>Tue, 24 May 2022 12:50:35 -0700</lastBuildDate><atom:link href="https://blog.rxkiro.xyz/tags/firebase/index.xml" rel="self" type="application/rss+xml"/><item><title>Audio Splitting in Linux</title><link>https://blog.rxkiro.xyz/posts/audio-splitting-in-linux/</link><pubDate>Tue, 24 May 2022 12:50:35 -0700</pubDate><guid>https://blog.rxkiro.xyz/posts/audio-splitting-in-linux/</guid><description>Pre-Requisites You&amp;rsquo;ll need to have both pulseaudio and pavucontrol installed on your system
+Install For Ubuntu sudo apt-get pulseaudio pavucontrol Install For Arch pacman -S pulseaudio pavucontrol # OR yay -S pulseaudio pavucontrol Setting up a new audio sink Make a new directory called .pulse in your home directory, this is the default pulseaudio config folder. Note that depending on your OS, the default pulseaudio directory could be in a different path or different folder name.</description><content>&lt;h2 id="pre-requisites">Pre-Requisites&lt;/h2>
+&lt;p>You&amp;rsquo;ll need to have both &lt;code>pulseaudio&lt;/code> and &lt;code>pavucontrol&lt;/code> installed on your system&lt;/p>
+&lt;h3 id="install-for-ubuntu">Install For Ubuntu&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo apt-get pulseaudio pavucontrol
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="install-for-arch">Install For Arch&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>pacman -S pulseaudio pavucontrol
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># OR&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>yay -S pulseaudio pavucontrol
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="setting-up-a-new-audio-sink">Setting up a new audio sink&lt;/h2>
+&lt;p>Make a new directory called &lt;code>.pulse&lt;/code> in your home directory, this is the default &lt;code>pulseaudio&lt;/code> config folder.
+&lt;strong>Note&lt;/strong> that depending on your OS, the default &lt;code>pulseaudio&lt;/code> directory could be in a different path or different folder name. Check your &lt;code>man&lt;/code> pages with &lt;code>man pulseaudio&lt;/code>.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span> mkdir ~/.pulse
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Copy the default &lt;code>pulseaudio&lt;/code> config, &lt;code>default.pa&lt;/code>, into the new folder.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>cp /etc/pulse/default.pa ~/.pulse/
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Make sure the new file is in your directory&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>ls -la ~/.pulse
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Next, you need to find all of your current audio sinks:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>pacmd list-sinks | grep -e &lt;span style="color:#e6db74">&amp;#39;index:&amp;#39;&lt;/span> -e &lt;span style="color:#e6db74">&amp;#39;name:&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This will show all of your audio output devices. Your output should look something like this:&lt;/p>
+&lt;pre tabindex="0">&lt;code> index: 0
+name: &amp;lt;alsa_output.pci-0000_01_00.1.hdmi-stereo&amp;gt;
+* index: 1
+name: &amp;lt;alsa_output.usb-Razer_Razer_Kraken_7.1_V2_00000000-00.analog-stereo&amp;gt;
+index: 2
+name: &amp;lt;alsa_output.pci-0000_00_1f.3.analog-stereo&amp;gt;
+&lt;/code>&lt;/pre>&lt;p>The &lt;code>*&lt;/code> symbol shows your currently active audio output.&lt;/p>
+&lt;p>Copy the audio output you want to direct audio towards. For me, I want to be able to send all audio source I&amp;rsquo;m monitoring to my headset.
+So I would copy &lt;code>alsa_output.usb-Razer_Razer_Kraken_7.1_V2_00000000-00.analog-stereo&lt;/code>.
+Paste this in a empty text document. You&amp;rsquo;ll need this info later.&lt;/p>
+&lt;p>Next, you&amp;rsquo;ll want to make a dummy audio sink. To do this, open up
+&lt;code>~/.pulse/default.pa&lt;/code> in a text editor. Go all the way to the bottom of the document and use this template to define your new audio sink.&lt;/p>
+&lt;p>Here is a template that you can use:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>load-module module-null-sink sink_name=channelname
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>update-sink-proplist channelname device.description=&amp;#34;channelname Audio&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>update-source-proplist channelname.monitor device.description=&amp;#39;Monitor of channelname Audio&amp;#39;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>load-module module-loopback source=channelname.monitor sink=outputdevicename latency_msec=1
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Replace &lt;code>channelname&lt;/code> with your audio sink name, then replace &lt;code>outputdevicename&lt;/code> with the audio output device we copied earlier.&lt;/p>
+&lt;h3 id="example">Example&lt;/h3>
+&lt;p>I used this to better control which audio source I want to be streamed on twitch through OBS but still be able to monitor and hear everything.
+Here&amp;rsquo;s what my &lt;code>default.pa&lt;/code> looks like&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>load-module module-null-sink sink_name=twitchaudio
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>update-sink-proplist twitchaudio device.description=&amp;#39;Twitch Streaming Audio&amp;#39;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>update-source-proplist twitchaudio.monitor device.description=&amp;#39;Monitor of Twitch Audio&amp;#39;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>load-module module-loopback source=twitchaudio.monitor sink=alsa_output.usb-Razer_Razer_Kraken_7.1_V2_00000000-00.analog-stereo latency_msec=1
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="restart-pulseaudio-and-all-of-your-apps">Restart Pulseaudio And All Of Your Apps&lt;/h2>
+&lt;p>After you&amp;rsquo;re done making custom audio sinks, make sure to restart &lt;code>pulseaudio&lt;/code> using this command:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>pulseaudio --kill
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This should automatically restart &lt;code>pulseaudio&lt;/code>, but if it doesn&amp;rsquo;t, you can manually start it with:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>pulseaudio --start
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>After restarting &lt;code>pulseaudio&lt;/code>, you&amp;rsquo;ll find that there&amp;rsquo;s no audio. You&amp;rsquo;ll need to restart all your apps that streams audio to your speakers.&lt;/p>
+&lt;h2 id="pulseaudio-volume-control-app-pavucontrol">Pulseaudio Volume Control App (pavucontrol)&lt;/h2>
+&lt;p>From here launch &lt;code>pavucontrol&lt;/code> and you&amp;rsquo;ll be able to see your new audio sink in the &lt;code>recording, playback, and output devices&lt;/code> tabs. `
+This app will let you control where you want all of your audio sources to be directed to.&lt;/p>
+&lt;h2 id="misc">Misc&lt;/h2>
+&lt;p>For more info, check out the arch wiki page: &lt;a href="https://wiki.archlinux.org/title/PulseAudio/Examples#Remapping_sinks">wiki.archlinux.org&lt;/a>&lt;/p></content></item></channel></rss>
