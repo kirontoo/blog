@@ -1,58 +1,217 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>firebase on Kironto</title><link>https://blog.rxkiro.xyz/tags/firebase/</link><description>Recent content in firebase on Kironto</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright><lastBuildDate>Tue, 24 May 2022 12:50:35 -0700</lastBuildDate><atom:link href="https://blog.rxkiro.xyz/tags/firebase/index.xml" rel="self" type="application/rss+xml"/><item><title>Audio Splitting in Linux</title><link>https://blog.rxkiro.xyz/posts/audio-splitting-in-linux/</link><pubDate>Tue, 24 May 2022 12:50:35 -0700</pubDate><guid>https://blog.rxkiro.xyz/posts/audio-splitting-in-linux/</guid><description>Pre-Requisites You&amp;rsquo;ll need to have both pulseaudio and pavucontrol installed on your system
-Install For Ubuntu sudo apt-get pulseaudio pavucontrol Install For Arch pacman -S pulseaudio pavucontrol # OR yay -S pulseaudio pavucontrol Setting up a new audio sink Make a new directory called .pulse in your home directory, this is the default pulseaudio config folder. Note that depending on your OS, the default pulseaudio directory could be in a different path or different folder name.</description><content>&lt;h2 id="pre-requisites">Pre-Requisites&lt;/h2>
-&lt;p>You&amp;rsquo;ll need to have both &lt;code>pulseaudio&lt;/code> and &lt;code>pavucontrol&lt;/code> installed on your system&lt;/p>
-&lt;h3 id="install-for-ubuntu">Install For Ubuntu&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo apt-get pulseaudio pavucontrol
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="install-for-arch">Install For Arch&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>pacman -S pulseaudio pavucontrol
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>firebase on Kironto</title><link>https://blog.rxkiro.xyz/tags/firebase/</link><description>Recent content in firebase on Kironto</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 19 Dec 2022 20:46:55 -0800</lastBuildDate><atom:link href="https://blog.rxkiro.xyz/tags/firebase/index.xml" rel="self" type="application/rss+xml"/><item><title>Setting Up Persistent Authentication With Firebase 9, React and Redux</title><link>https://blog.rxkiro.xyz/posts/setting-up-persistent-authentication-with-firebase-9-react-and-redux/</link><pubDate>Mon, 19 Dec 2022 20:46:55 -0800</pubDate><guid>https://blog.rxkiro.xyz/posts/setting-up-persistent-authentication-with-firebase-9-react-and-redux/</guid><description>While working on one of my projects, I had a bit of trouble trying to add persistent authentication with Firebase and so this is my solution. I don&amp;rsquo;t want this guide to be too long, so I will not be covering how to implement Firebase sign-in and sign-out.
+Hope it helps someone! :)
+Dependencies Make sure to already have a React project and a Firebase project created. As well as to install npm packages for both firebase and react-redux.</description><content>&lt;p>While working on one of my projects, I had a bit of trouble trying to add persistent
+authentication with Firebase and so this is my solution. I don&amp;rsquo;t want this guide
+to be too long, so I will not be covering how to implement Firebase sign-in and
+sign-out.&lt;/p>
+&lt;p>Hope it helps someone! :)&lt;/p>
+&lt;h2 id="dependencies">Dependencies&lt;/h2>
+&lt;p>Make sure to already have a React project and a Firebase project created. As
+well as to install npm packages for both &lt;code>firebase&lt;/code> and &lt;code>react-redux&lt;/code>.&lt;/p>
+&lt;p>You can install them with:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>npm install @reduxjs/toolkit react-redux firebase
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="setting-up-firebase">Setting up Firebase&lt;/h2>
+&lt;p>Before everything, make sure to set up your firebase config. I am using typescript,
+so this file will be called &lt;code>firebase.ts&lt;/code>. In my project, I will be placing this
+file in a &lt;code>utils&lt;/code> folder.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// file: utils/firebase.ts
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">firebaseConfig&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/*
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> COPY PASTE YOUR CONFIG HERE
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">apiKey&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;xxxxxxxxxxxxxxxxxxxx&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">authDomain&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;xxxxxxxxxxxxxxxxxxxx&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">projectId&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;xxxxxxxxxxxxxxxxxxxx&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">storageBucket&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;xxxxxxxxxxxxxxxxxxxx&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">messagingSenderId&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;xxxxxxxxxxxxxxxxxxxx&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">appId&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;xxxxxxxxxxxxxxxxxxxx&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># OR&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">firebaseApp&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">initializeApp&lt;/span>(&lt;span style="color:#a6e22e">firebaseConfig&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">auth&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">getAuth&lt;/span>(&lt;span style="color:#a6e22e">firebaseApp&lt;/span>);
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>yay -S pulseaudio pavucontrol
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="setting-up-a-new-audio-sink">Setting up a new audio sink&lt;/h2>
-&lt;p>Make a new directory called &lt;code>.pulse&lt;/code> in your home directory, this is the default &lt;code>pulseaudio&lt;/code> config folder.
-&lt;strong>Note&lt;/strong> that depending on your OS, the default &lt;code>pulseaudio&lt;/code> directory could be in a different path or different folder name. Check your &lt;code>man&lt;/code> pages with &lt;code>man pulseaudio&lt;/code>.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span> mkdir ~/.pulse
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Copy the default &lt;code>pulseaudio&lt;/code> config, &lt;code>default.pa&lt;/code>, into the new folder.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>cp /etc/pulse/default.pa ~/.pulse/
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Make sure the new file is in your directory&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>ls -la ~/.pulse
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Next, you need to find all of your current audio sinks:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>pacmd list-sinks | grep -e &lt;span style="color:#e6db74">&amp;#39;index:&amp;#39;&lt;/span> -e &lt;span style="color:#e6db74">&amp;#39;name:&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This will show all of your audio output devices. Your output should look something like this:&lt;/p>
-&lt;pre tabindex="0">&lt;code> index: 0
-name: &amp;lt;alsa_output.pci-0000_01_00.1.hdmi-stereo&amp;gt;
-* index: 1
-name: &amp;lt;alsa_output.usb-Razer_Razer_Kraken_7.1_V2_00000000-00.analog-stereo&amp;gt;
-index: 2
-name: &amp;lt;alsa_output.pci-0000_00_1f.3.analog-stereo&amp;gt;
-&lt;/code>&lt;/pre>&lt;p>The &lt;code>*&lt;/code> symbol shows your currently active audio output.&lt;/p>
-&lt;p>Copy the audio output you want to direct audio towards. For me, I want to be able to send all audio source I&amp;rsquo;m monitoring to my headset.
-So I would copy &lt;code>alsa_output.usb-Razer_Razer_Kraken_7.1_V2_00000000-00.analog-stereo&lt;/code>.
-Paste this in a empty text document. You&amp;rsquo;ll need this info later.&lt;/p>
-&lt;p>Next, you&amp;rsquo;ll want to make a dummy audio sink. To do this, open up
-&lt;code>~/.pulse/default.pa&lt;/code> in a text editor. Go all the way to the bottom of the document and use this template to define your new audio sink.&lt;/p>
-&lt;p>Here is a template that you can use:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>load-module module-null-sink sink_name=channelname
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>update-sink-proplist channelname device.description=&amp;#34;channelname Audio&amp;#34;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>update-source-proplist channelname.monitor device.description=&amp;#39;Monitor of channelname Audio&amp;#39;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>load-module module-loopback source=channelname.monitor sink=outputdevicename latency_msec=1
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Replace &lt;code>channelname&lt;/code> with your audio sink name, then replace &lt;code>outputdevicename&lt;/code> with the audio output device we copied earlier.&lt;/p>
-&lt;h3 id="example">Example&lt;/h3>
-&lt;p>I used this to better control which audio source I want to be streamed on twitch through OBS but still be able to monitor and hear everything.
-Here&amp;rsquo;s what my &lt;code>default.pa&lt;/code> looks like&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>load-module module-null-sink sink_name=twitchaudio
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>update-sink-proplist twitchaudio device.description=&amp;#39;Twitch Streaming Audio&amp;#39;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>update-source-proplist twitchaudio.monitor device.description=&amp;#39;Monitor of Twitch Audio&amp;#39;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>load-module module-loopback source=twitchaudio.monitor sink=alsa_output.usb-Razer_Razer_Kraken_7.1_V2_00000000-00.analog-stereo latency_msec=1
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="restart-pulseaudio-and-all-of-your-apps">Restart Pulseaudio And All Of Your Apps&lt;/h2>
-&lt;p>After you&amp;rsquo;re done making custom audio sinks, make sure to restart &lt;code>pulseaudio&lt;/code> using this command:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>pulseaudio --kill
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This should automatically restart &lt;code>pulseaudio&lt;/code>, but if it doesn&amp;rsquo;t, you can manually start it with:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>pulseaudio --start
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>After restarting &lt;code>pulseaudio&lt;/code>, you&amp;rsquo;ll find that there&amp;rsquo;s no audio. You&amp;rsquo;ll need to restart all your apps that streams audio to your speakers.&lt;/p>
-&lt;h2 id="pulseaudio-volume-control-app-pavucontrol">Pulseaudio Volume Control App (pavucontrol)&lt;/h2>
-&lt;p>From here launch &lt;code>pavucontrol&lt;/code> and you&amp;rsquo;ll be able to see your new audio sink in the &lt;code>recording, playback, and output devices&lt;/code> tabs. `
-This app will let you control where you want all of your audio sources to be directed to.&lt;/p>
-&lt;h2 id="misc">Misc&lt;/h2>
-&lt;p>For more info, check out the arch wiki page: &lt;a href="https://wiki.archlinux.org/title/PulseAudio/Examples#Remapping_sinks">wiki.archlinux.org&lt;/a>&lt;/p></content></item></channel></rss>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">export&lt;/span> { &lt;span style="color:#a6e22e">auth&lt;/span>, &lt;span style="color:#a6e22e">firebaseApp&lt;/span> };
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="add-a-provider-in-firebase">Add a provider in firebase&lt;/h3>
+&lt;p>If you haven&amp;rsquo;t already, we will need to add a provider in Firebase in order
+to enable sign-in using email and password.&lt;/p>
+&lt;p>In the Firebase console, go to your
+&lt;code>Authentication&lt;/code> dashboard and then click on the &lt;code>Sign-in method&lt;/code> tab. From here,
+we should be able to see a &lt;code>Add new provider&lt;/code> button.
+Click on this button and then under &lt;code>Native Providers&lt;/code>, enable &lt;code>email/password&lt;/code>.&lt;/p>
+&lt;h2 id="setting-up-redux">Setting up Redux&lt;/h2>
+&lt;p>If you have already set up Redux in your project, feel free to skip this section!
+According to the official Redux docs, we should create slices within a folder
+called &lt;code>features&lt;/code>. I prefer to have all my Redux related files organized within
+a single a folder. So we&amp;rsquo;ll be adding all of our Redux related files within a
+folder called &lt;code>store&lt;/code>.&lt;/p>
+&lt;h3 id="what-our-folder-structure-will-look-like">What our folder structure will look like&lt;/h3>
+&lt;p>This will be how our Redux folder structure will look like.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span> src/store
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├── features
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ └── user
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ └── userSlice.ts
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├── index.ts
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> └── reducers.ts
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="create-our-store">Create our store&lt;/h3>
+&lt;p>In our &lt;code>store&lt;/code> folder create a file called &lt;code>index.ts&lt;/code>. This is where we will
+be setting up our Redux store. We name the file &lt;code>index.ts&lt;/code> so that when we export
+our Redux store, we can easily import it to our app with
+&lt;code>import store from './store';&lt;/code>&lt;/p>
+&lt;p>Place this code in &lt;code>store/index.ts&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// file: src/store/index.ts
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">configureStore&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;@reduxjs/toolkit&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">store&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">configureStore&lt;/span>({
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">reducer&lt;/span>&lt;span style="color:#f92672">:&lt;/span> () &lt;span style="color:#f92672">=&amp;gt;&lt;/span> ({}),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>});
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">default&lt;/span> &lt;span style="color:#a6e22e">store&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Then we will need to make sure we provide the store to our entire app.
+Within our React project and in the file where you mount your root app
+(this should be in &lt;code>src/index.ts&lt;/code>), import &lt;code>Provider&lt;/code> from &lt;code>react-redux&lt;/code> and
+our Redux store. Then wrap your App component with the component &lt;code>&amp;lt;Provider&amp;gt;&lt;/code>.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// file: src/index.ts
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">import&lt;/span> &lt;span style="color:#a6e22e">React&lt;/span> &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;react&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> &lt;span style="color:#a6e22e">ReactDOM&lt;/span> &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;react-dom&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">Provider&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;react-redux&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> &lt;span style="color:#a6e22e">App&lt;/span> &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;./App&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> &lt;span style="color:#a6e22e">store&lt;/span> &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;./store&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">ReactDOM&lt;/span>.&lt;span style="color:#a6e22e">render&lt;/span>(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">React.StrictMode&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">Provider&lt;/span> &lt;span style="color:#a6e22e">store&lt;/span>&lt;span style="color:#f92672">=&lt;/span>{&lt;span style="color:#a6e22e">store&lt;/span>}&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">App&lt;/span> /&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">Provider&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">React.StrictMode&lt;/span>&amp;gt;,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> document.&lt;span style="color:#a6e22e">getElementById&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;root&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>If you need more information on how all of this code works, you can check out
+Redux&amp;rsquo;s official docs on &lt;a href="https://redux.js.org/introduction/getting-started">getting started with Redux&lt;/a>.&lt;/p>
+&lt;h3 id="creating-our-user-slice">Creating our user slice&lt;/h3>
+&lt;p>The user slice will be responsible for all of our state logic and actions for
+users. You can find more information on slices in the
+&lt;a href="https://redux.js.org/tutorials/essentials/part-2-app-structure#redux-slices">official Redux docs&lt;/a>.
+In our user slice, a user is logged out when the state is null and logged in
+when there is User data.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// file: ./store/features/user/userSlice
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">createSlice&lt;/span>, &lt;span style="color:#a6e22e">PayloadAction&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;@reduxjs/toolkit&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">User&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;firebase/auth&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">UserState&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">user&lt;/span>: &lt;span style="color:#66d9ef">User&lt;/span> &lt;span style="color:#f92672">|&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">initialState&lt;/span>: &lt;span style="color:#66d9ef">UserState&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">user&lt;/span>: &lt;span style="color:#66d9ef">null&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">userSlice&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">createSlice&lt;/span>({
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;user&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">initialState&lt;/span>: &lt;span style="color:#66d9ef">initialState&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">reducers&lt;/span>&lt;span style="color:#f92672">:&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">logout() {&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ...&lt;span style="color:#a6e22e">initialState&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> };
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">login&lt;/span>(&lt;span style="color:#a6e22e">state&lt;/span>: &lt;span style="color:#66d9ef">UserState&lt;/span>, &lt;span style="color:#a6e22e">action&lt;/span>: &lt;span style="color:#66d9ef">PayloadAction&lt;/span>&amp;lt;&lt;span style="color:#f92672">User&lt;/span>&amp;gt;) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">user&lt;/span>: &lt;span style="color:#66d9ef">action.payload&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> };
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>});
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// selectors
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">selectUser&lt;/span> &lt;span style="color:#f92672">=&lt;/span> (&lt;span style="color:#a6e22e">state&lt;/span>: &lt;span style="color:#66d9ef">UserState&lt;/span>) &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">state&lt;/span>.&lt;span style="color:#a6e22e">user&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// actions
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> { &lt;span style="color:#a6e22e">startLoading&lt;/span>, &lt;span style="color:#a6e22e">stopLoading&lt;/span>, &lt;span style="color:#a6e22e">login&lt;/span>, &lt;span style="color:#a6e22e">logout&lt;/span> } &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">userSlice&lt;/span>.&lt;span style="color:#a6e22e">actions&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">default&lt;/span> &lt;span style="color:#a6e22e">userSlice&lt;/span>.&lt;span style="color:#a6e22e">reducer&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>With the reducers file in place, we can now add our user reducer to our list of
+reducers.
+I like to create a separate file for this so that the &lt;code>store/index.ts&lt;/code> file is
+a bit cleaner. So we will create a new file called &lt;code>reducers.ts&lt;/code> in the &lt;code>store&lt;/code>
+folder to hold all of our reducers. And to combine our reducers, we will use a
+built-in Redux method called &lt;code>combineReducers&lt;/code>.&lt;/p>
+&lt;p>Here&amp;rsquo;s what this code will look like:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// file: ./store/reducers.ts
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">combineReducers&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;redux&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> &lt;span style="color:#a6e22e">userReducer&lt;/span> &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;./features/user/userSlice&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">rootReducer&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">combineReducers&lt;/span>({
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">user&lt;/span>: &lt;span style="color:#66d9ef">userReducer&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// OTHER REDUCERS HERE
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>});
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">default&lt;/span> &lt;span style="color:#a6e22e">rootReducer&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>You also need to make sure the store knows about these
+reducers. So we will also update &lt;code>./store/index.ts&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// file: ./store/index.ts
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">configureStore&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;@reduxjs/toolkit&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> &lt;span style="color:#a6e22e">rootReducer&lt;/span> &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;./reducers&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">store&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">configureStore&lt;/span>({
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// NEW CODE
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">reducer&lt;/span>: &lt;span style="color:#66d9ef">rootReducer&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// NEW CODE
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>});
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">default&lt;/span> &lt;span style="color:#a6e22e">store&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="loading-persistent-user-data-on-mount">Loading persistent user data on mount&lt;/h2>
+&lt;p>Ok! We&amp;rsquo;ve finally gotten redux and firebase up and running. Now to make user
+login persistent.&lt;/p>
+&lt;p>In order to watch for changes in our Firebase authentication state, we will
+need to use the method &lt;code>onAuthStateChange&lt;/code>. It is a &lt;code>observer&lt;/code> that watches for
+changes in our Firebase authentication state. And since it&amp;rsquo;s an observer, we
+will also need to make sure we clean it up by unsubscribing to the observer
+when the component unmounts.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">useEffect&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;react&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">useDispatch&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;react-redux&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">login&lt;/span>, &lt;span style="color:#a6e22e">logout&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;./store/features/user/userSlice&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">App() {&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">dispatch&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">useDispatch&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">useEffect&lt;/span>(() &lt;span style="color:#f92672">=&amp;gt;&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">unsubscribe&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">onAuthStateChanged&lt;/span>(&lt;span style="color:#a6e22e">auth&lt;/span>, (&lt;span style="color:#a6e22e">userAuth&lt;/span>) &lt;span style="color:#f92672">=&amp;gt;&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#a6e22e">userAuth&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">dispatch&lt;/span>(&lt;span style="color:#a6e22e">login&lt;/span>(&lt;span style="color:#a6e22e">userAuth&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">else&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">dispatch&lt;/span>(&lt;span style="color:#a6e22e">logout&lt;/span>());
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> });
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> () &lt;span style="color:#f92672">=&amp;gt;&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">unsubscribe&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">dispatch&lt;/span>(&lt;span style="color:#a6e22e">logout&lt;/span>());
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> };
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }, []);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> (
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// ...
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">// component logic here
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">// ...
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> );
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="accessing-user-data-within-a-react-component">Accessing user data within a React component&lt;/h3>
+&lt;p>In order to access our user&amp;rsquo;s data and login status, we need to import
+&lt;code>selectUser&lt;/code> which we&amp;rsquo;ve already implemented in our &lt;code>userSlice.ts&lt;/code> file.
+Combined with &lt;code>useSelector&lt;/code>, we will be able to grab the data from within our
+Redux store.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">selectUser&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;./store/features/user/userSlice&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">useSelector&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;react-redux&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> &lt;span style="color:#66d9ef">type&lt;/span> { &lt;span style="color:#a6e22e">User&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;firebase/auth&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">myComponent() {&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">user&lt;/span>: &lt;span style="color:#66d9ef">User&lt;/span> &lt;span style="color:#f92672">|&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">useSelector&lt;/span>(&lt;span style="color:#a6e22e">selectUser&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// ...
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">// component logic here
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">// ...
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Annnnd we are done. Let me know if there are any mistakes :D&lt;/p></content></item></channel></rss>

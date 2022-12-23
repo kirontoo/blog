@@ -18,7 +18,223 @@ Work Check out the things I&amp;rsquo;ve worked on rxkiro.xyz</description><cont
 &lt;h2 id="rss">RSS&lt;/h2>
 &lt;p>Keep in touch by following my &lt;a href="https://blog.rxkiro.xyz/index.xml">RSS feed&lt;/a>&lt;/p>
 &lt;h2 id="work">Work&lt;/h2>
-&lt;p>Check out the things I&amp;rsquo;ve worked on &lt;a href="https://rxkiro.xyz">rxkiro.xyz&lt;/a>&lt;/p></content></item><item><title>Audio Splitting in Linux</title><link>https://blog.rxkiro.xyz/posts/audio-splitting-in-linux/</link><pubDate>Tue, 24 May 2022 12:50:35 -0700</pubDate><guid>https://blog.rxkiro.xyz/posts/audio-splitting-in-linux/</guid><description>Pre-Requisites You&amp;rsquo;ll need to have both pulseaudio and pavucontrol installed on your system
+&lt;p>Check out the things I&amp;rsquo;ve worked on &lt;a href="https://rxkiro.xyz">rxkiro.xyz&lt;/a>&lt;/p></content></item><item><title>Setting Up Persistent Authentication With Firebase 9, React and Redux</title><link>https://blog.rxkiro.xyz/posts/setting-up-persistent-authentication-with-firebase-9-react-and-redux/</link><pubDate>Mon, 19 Dec 2022 20:46:55 -0800</pubDate><guid>https://blog.rxkiro.xyz/posts/setting-up-persistent-authentication-with-firebase-9-react-and-redux/</guid><description>While working on one of my projects, I had a bit of trouble trying to add persistent authentication with Firebase and so this is my solution. I don&amp;rsquo;t want this guide to be too long, so I will not be covering how to implement Firebase sign-in and sign-out.
+Hope it helps someone! :)
+Dependencies Make sure to already have a React project and a Firebase project created. As well as to install npm packages for both firebase and react-redux.</description><content>&lt;p>While working on one of my projects, I had a bit of trouble trying to add persistent
+authentication with Firebase and so this is my solution. I don&amp;rsquo;t want this guide
+to be too long, so I will not be covering how to implement Firebase sign-in and
+sign-out.&lt;/p>
+&lt;p>Hope it helps someone! :)&lt;/p>
+&lt;h2 id="dependencies">Dependencies&lt;/h2>
+&lt;p>Make sure to already have a React project and a Firebase project created. As
+well as to install npm packages for both &lt;code>firebase&lt;/code> and &lt;code>react-redux&lt;/code>.&lt;/p>
+&lt;p>You can install them with:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>npm install @reduxjs/toolkit react-redux firebase
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="setting-up-firebase">Setting up Firebase&lt;/h2>
+&lt;p>Before everything, make sure to set up your firebase config. I am using typescript,
+so this file will be called &lt;code>firebase.ts&lt;/code>. In my project, I will be placing this
+file in a &lt;code>utils&lt;/code> folder.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// file: utils/firebase.ts
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">firebaseConfig&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/*
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> COPY PASTE YOUR CONFIG HERE
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">apiKey&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;xxxxxxxxxxxxxxxxxxxx&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">authDomain&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;xxxxxxxxxxxxxxxxxxxx&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">projectId&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;xxxxxxxxxxxxxxxxxxxx&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">storageBucket&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;xxxxxxxxxxxxxxxxxxxx&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">messagingSenderId&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;xxxxxxxxxxxxxxxxxxxx&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">appId&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;xxxxxxxxxxxxxxxxxxxx&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">firebaseApp&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">initializeApp&lt;/span>(&lt;span style="color:#a6e22e">firebaseConfig&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">auth&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">getAuth&lt;/span>(&lt;span style="color:#a6e22e">firebaseApp&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">export&lt;/span> { &lt;span style="color:#a6e22e">auth&lt;/span>, &lt;span style="color:#a6e22e">firebaseApp&lt;/span> };
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="add-a-provider-in-firebase">Add a provider in firebase&lt;/h3>
+&lt;p>If you haven&amp;rsquo;t already, we will need to add a provider in Firebase in order
+to enable sign-in using email and password.&lt;/p>
+&lt;p>In the Firebase console, go to your
+&lt;code>Authentication&lt;/code> dashboard and then click on the &lt;code>Sign-in method&lt;/code> tab. From here,
+we should be able to see a &lt;code>Add new provider&lt;/code> button.
+Click on this button and then under &lt;code>Native Providers&lt;/code>, enable &lt;code>email/password&lt;/code>.&lt;/p>
+&lt;h2 id="setting-up-redux">Setting up Redux&lt;/h2>
+&lt;p>If you have already set up Redux in your project, feel free to skip this section!
+According to the official Redux docs, we should create slices within a folder
+called &lt;code>features&lt;/code>. I prefer to have all my Redux related files organized within
+a single a folder. So we&amp;rsquo;ll be adding all of our Redux related files within a
+folder called &lt;code>store&lt;/code>.&lt;/p>
+&lt;h3 id="what-our-folder-structure-will-look-like">What our folder structure will look like&lt;/h3>
+&lt;p>This will be how our Redux folder structure will look like.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span> src/store
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├── features
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ └── user
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ └── userSlice.ts
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├── index.ts
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> └── reducers.ts
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="create-our-store">Create our store&lt;/h3>
+&lt;p>In our &lt;code>store&lt;/code> folder create a file called &lt;code>index.ts&lt;/code>. This is where we will
+be setting up our Redux store. We name the file &lt;code>index.ts&lt;/code> so that when we export
+our Redux store, we can easily import it to our app with
+&lt;code>import store from './store';&lt;/code>&lt;/p>
+&lt;p>Place this code in &lt;code>store/index.ts&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// file: src/store/index.ts
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">configureStore&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;@reduxjs/toolkit&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">store&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">configureStore&lt;/span>({
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">reducer&lt;/span>&lt;span style="color:#f92672">:&lt;/span> () &lt;span style="color:#f92672">=&amp;gt;&lt;/span> ({}),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>});
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">default&lt;/span> &lt;span style="color:#a6e22e">store&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Then we will need to make sure we provide the store to our entire app.
+Within our React project and in the file where you mount your root app
+(this should be in &lt;code>src/index.ts&lt;/code>), import &lt;code>Provider&lt;/code> from &lt;code>react-redux&lt;/code> and
+our Redux store. Then wrap your App component with the component &lt;code>&amp;lt;Provider&amp;gt;&lt;/code>.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// file: src/index.ts
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">import&lt;/span> &lt;span style="color:#a6e22e">React&lt;/span> &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;react&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> &lt;span style="color:#a6e22e">ReactDOM&lt;/span> &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;react-dom&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">Provider&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;react-redux&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> &lt;span style="color:#a6e22e">App&lt;/span> &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;./App&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> &lt;span style="color:#a6e22e">store&lt;/span> &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;./store&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">ReactDOM&lt;/span>.&lt;span style="color:#a6e22e">render&lt;/span>(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">React.StrictMode&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">Provider&lt;/span> &lt;span style="color:#a6e22e">store&lt;/span>&lt;span style="color:#f92672">=&lt;/span>{&lt;span style="color:#a6e22e">store&lt;/span>}&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">App&lt;/span> /&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">Provider&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">React.StrictMode&lt;/span>&amp;gt;,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> document.&lt;span style="color:#a6e22e">getElementById&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;root&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>If you need more information on how all of this code works, you can check out
+Redux&amp;rsquo;s official docs on &lt;a href="https://redux.js.org/introduction/getting-started">getting started with Redux&lt;/a>.&lt;/p>
+&lt;h3 id="creating-our-user-slice">Creating our user slice&lt;/h3>
+&lt;p>The user slice will be responsible for all of our state logic and actions for
+users. You can find more information on slices in the
+&lt;a href="https://redux.js.org/tutorials/essentials/part-2-app-structure#redux-slices">official Redux docs&lt;/a>.
+In our user slice, a user is logged out when the state is null and logged in
+when there is User data.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// file: ./store/features/user/userSlice
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">createSlice&lt;/span>, &lt;span style="color:#a6e22e">PayloadAction&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;@reduxjs/toolkit&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">User&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;firebase/auth&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">UserState&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">user&lt;/span>: &lt;span style="color:#66d9ef">User&lt;/span> &lt;span style="color:#f92672">|&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">initialState&lt;/span>: &lt;span style="color:#66d9ef">UserState&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">user&lt;/span>: &lt;span style="color:#66d9ef">null&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">userSlice&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">createSlice&lt;/span>({
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;user&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">initialState&lt;/span>: &lt;span style="color:#66d9ef">initialState&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">reducers&lt;/span>&lt;span style="color:#f92672">:&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">logout() {&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ...&lt;span style="color:#a6e22e">initialState&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> };
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">login&lt;/span>(&lt;span style="color:#a6e22e">state&lt;/span>: &lt;span style="color:#66d9ef">UserState&lt;/span>, &lt;span style="color:#a6e22e">action&lt;/span>: &lt;span style="color:#66d9ef">PayloadAction&lt;/span>&amp;lt;&lt;span style="color:#f92672">User&lt;/span>&amp;gt;) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">user&lt;/span>: &lt;span style="color:#66d9ef">action.payload&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> };
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>});
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// selectors
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">selectUser&lt;/span> &lt;span style="color:#f92672">=&lt;/span> (&lt;span style="color:#a6e22e">state&lt;/span>: &lt;span style="color:#66d9ef">UserState&lt;/span>) &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">state&lt;/span>.&lt;span style="color:#a6e22e">user&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// actions
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> { &lt;span style="color:#a6e22e">startLoading&lt;/span>, &lt;span style="color:#a6e22e">stopLoading&lt;/span>, &lt;span style="color:#a6e22e">login&lt;/span>, &lt;span style="color:#a6e22e">logout&lt;/span> } &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">userSlice&lt;/span>.&lt;span style="color:#a6e22e">actions&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">default&lt;/span> &lt;span style="color:#a6e22e">userSlice&lt;/span>.&lt;span style="color:#a6e22e">reducer&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>With the reducers file in place, we can now add our user reducer to our list of
+reducers.
+I like to create a separate file for this so that the &lt;code>store/index.ts&lt;/code> file is
+a bit cleaner. So we will create a new file called &lt;code>reducers.ts&lt;/code> in the &lt;code>store&lt;/code>
+folder to hold all of our reducers. And to combine our reducers, we will use a
+built-in Redux method called &lt;code>combineReducers&lt;/code>.&lt;/p>
+&lt;p>Here&amp;rsquo;s what this code will look like:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// file: ./store/reducers.ts
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">combineReducers&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;redux&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> &lt;span style="color:#a6e22e">userReducer&lt;/span> &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;./features/user/userSlice&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">rootReducer&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">combineReducers&lt;/span>({
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">user&lt;/span>: &lt;span style="color:#66d9ef">userReducer&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// OTHER REDUCERS HERE
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>});
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">default&lt;/span> &lt;span style="color:#a6e22e">rootReducer&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>You also need to make sure the store knows about these
+reducers. So we will also update &lt;code>./store/index.ts&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// file: ./store/index.ts
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">configureStore&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;@reduxjs/toolkit&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> &lt;span style="color:#a6e22e">rootReducer&lt;/span> &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;./reducers&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">store&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">configureStore&lt;/span>({
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// NEW CODE
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">reducer&lt;/span>: &lt;span style="color:#66d9ef">rootReducer&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// NEW CODE
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>});
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">default&lt;/span> &lt;span style="color:#a6e22e">store&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="loading-persistent-user-data-on-mount">Loading persistent user data on mount&lt;/h2>
+&lt;p>Ok! We&amp;rsquo;ve finally gotten redux and firebase up and running. Now to make user
+login persistent.&lt;/p>
+&lt;p>In order to watch for changes in our Firebase authentication state, we will
+need to use the method &lt;code>onAuthStateChange&lt;/code>. It is a &lt;code>observer&lt;/code> that watches for
+changes in our Firebase authentication state. And since it&amp;rsquo;s an observer, we
+will also need to make sure we clean it up by unsubscribing to the observer
+when the component unmounts.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">useEffect&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;react&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">useDispatch&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;react-redux&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">login&lt;/span>, &lt;span style="color:#a6e22e">logout&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;./store/features/user/userSlice&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">App() {&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">dispatch&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">useDispatch&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">useEffect&lt;/span>(() &lt;span style="color:#f92672">=&amp;gt;&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">unsubscribe&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">onAuthStateChanged&lt;/span>(&lt;span style="color:#a6e22e">auth&lt;/span>, (&lt;span style="color:#a6e22e">userAuth&lt;/span>) &lt;span style="color:#f92672">=&amp;gt;&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#a6e22e">userAuth&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">dispatch&lt;/span>(&lt;span style="color:#a6e22e">login&lt;/span>(&lt;span style="color:#a6e22e">userAuth&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">else&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">dispatch&lt;/span>(&lt;span style="color:#a6e22e">logout&lt;/span>());
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> });
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> () &lt;span style="color:#f92672">=&amp;gt;&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">unsubscribe&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">dispatch&lt;/span>(&lt;span style="color:#a6e22e">logout&lt;/span>());
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> };
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }, []);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> (
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// ...
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">// component logic here
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">// ...
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> );
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="accessing-user-data-within-a-react-component">Accessing user data within a React component&lt;/h3>
+&lt;p>In order to access our user&amp;rsquo;s data and login status, we need to import
+&lt;code>selectUser&lt;/code> which we&amp;rsquo;ve already implemented in our &lt;code>userSlice.ts&lt;/code> file.
+Combined with &lt;code>useSelector&lt;/code>, we will be able to grab the data from within our
+Redux store.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">selectUser&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;./store/features/user/userSlice&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">useSelector&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;react-redux&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> &lt;span style="color:#66d9ef">type&lt;/span> { &lt;span style="color:#a6e22e">User&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;firebase/auth&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">myComponent() {&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">user&lt;/span>: &lt;span style="color:#66d9ef">User&lt;/span> &lt;span style="color:#f92672">|&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">useSelector&lt;/span>(&lt;span style="color:#a6e22e">selectUser&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// ...
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">// component logic here
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">// ...
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Annnnd we are done. Let me know if there are any mistakes :D&lt;/p></content></item><item><title>Audio Splitting in Linux</title><link>https://blog.rxkiro.xyz/posts/audio-splitting-in-linux/</link><pubDate>Tue, 24 May 2022 12:50:35 -0700</pubDate><guid>https://blog.rxkiro.xyz/posts/audio-splitting-in-linux/</guid><description>Pre-Requisites You&amp;rsquo;ll need to have both pulseaudio and pavucontrol installed on your system
 Install For Ubuntu sudo apt-get pulseaudio pavucontrol Install For Arch pacman -S pulseaudio pavucontrol # OR yay -S pulseaudio pavucontrol Setting up a new audio sink Make a new directory called .pulse in your home directory, this is the default pulseaudio config folder. Note that depending on your OS, the default pulseaudio directory could be in a different path or different folder name.</description><content>&lt;h2 id="pre-requisites">Pre-Requisites&lt;/h2>
 &lt;p>You&amp;rsquo;ll need to have both &lt;code>pulseaudio&lt;/code> and &lt;code>pavucontrol&lt;/code> installed on your system&lt;/p>
 &lt;h3 id="install-for-ubuntu">Install For Ubuntu&lt;/h3>

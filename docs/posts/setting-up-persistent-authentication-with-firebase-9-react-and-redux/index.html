@@ -1,468 +1,199 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  
-    <title>Setting Up Persistent Authentication With Firebase 9, React and Redux :: Kironto</title>
-  
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Learn how to set up persistent authentication in React using Firebase and Redux" />
-<meta name="keywords" content=", " />
-<meta name="robots" content="noodp" />
-<link rel="canonical" href="https://blog.rxkiro.xyz/posts/setting-up-persistent-authentication-with-firebase-9-react-and-redux/" />
-
-
-
-
-<link rel="stylesheet" href="https://blog.rxkiro.xyz/assets/style.css">
-
-
-
-
-
-
-<link rel="apple-touch-icon" href="https://blog.rxkiro.xyz/img/apple-touch-icon-192x192.png">
-
-  <link rel="shortcut icon" href="https://blog.rxkiro.xyz/img/favicon/orange.png">
-
-
-
-<meta name="twitter:card" content="summary" />
-
-  
-    <meta name="twitter:site" content="rxkironto" />
-  
-    <meta name="twitter:creator" content="rxkironto" />
-
-
-
-<meta property="og:locale" content="en" />
-<meta property="og:type" content="article" />
-<meta property="og:title" content="Setting Up Persistent Authentication With Firebase 9, React and Redux">
-<meta property="og:description" content="Learn how to set up persistent authentication in React using Firebase and Redux" />
-<meta property="og:url" content="https://blog.rxkiro.xyz/posts/setting-up-persistent-authentication-with-firebase-9-react-and-redux/" />
-<meta property="og:site_name" content="Kironto" />
-
-  <meta property="og:image" content="https://blog.rxkiro.xyz/">
-
-<meta property="og:image:width" content="2048">
-<meta property="og:image:height" content="1024">
-
-
-  <meta property="article:published_time" content="2022-12-19 20:46:55 -0800 PST" />
-
-
-
-
-
-
-
-
-
-
-
-
-</head>
-<body class="orange">
-
-
-<div class="container center headings--one-size">
-
-  <header class="header">
-  <div class="header__inner">
-    <div class="header__logo">
-      <a href="/">
-  <div class="logo">
-    [kironto] $
-  </div>
-</a>
-
-    </div>
-    
-      <div class="menu-trigger">menu</div>
-    
-  </div>
-  
-    <nav class="menu">
-  <ul class="menu__inner menu__inner--desktop">
-    
-      
-        
-          <li><a href="/whoami">whoami</a></li>
-        
-      
-        
-          <li><a href="/posts">Posts</a></li>
-        
-      
-      
-        <ul class="menu__sub-inner">
-          <li class="menu__sub-inner-more-trigger">Show more ▾</li>
-
-          <ul class="menu__sub-inner-more hidden">
-            
-              
-                <li><a href="/index.xml">RSS</a></li>
-              
-            
-              
-                <li><a href="/categories/">categories</a></li>
-              
-            
-              
-                <li><a href="/series/">series</a></li>
-              
-            
-              
-                <li><a href="/tags/">tags</a></li>
-              
-            
-          </ul>
-        </ul>
-      
-    
-
-    
-  </ul>
-
-  <ul class="menu__inner menu__inner--mobile">
-    
-      
-        <li><a href="/whoami">whoami</a></li>
-      
-    
-      
-        <li><a href="/posts">Posts</a></li>
-      
-    
-      
-        <li><a href="/index.xml">RSS</a></li>
-      
-    
-      
-        <li><a href="/categories/">categories</a></li>
-      
-    
-      
-        <li><a href="/series/">series</a></li>
-      
-    
-      
-        <li><a href="/tags/">tags</a></li>
-      
-    
-    
-  </ul>
-</nav>
-
-  
-</header>
-
-
-  <div class="content">
-    
-<div class="post">
-  <h1 class="post-title">
-    <a href="https://blog.rxkiro.xyz/posts/setting-up-persistent-authentication-with-firebase-9-react-and-redux/">Setting Up Persistent Authentication With Firebase 9, React and Redux</a></h1>
-  <div class="post-meta">
-    
-      <span class="post-date">
-        2022-12-19
-        
-      </span>
-    
-    
-      <span class="post-author">:: Amy Dang</span>
-    
-    
-      <span class="post-reading-time">:: 4 min read (796 words)</span>
-    
-  </div>
-
-  
-  <span class="post-tags">
-    
-    #<a href="https://blog.rxkiro.xyz/tags/redux/">redux</a>&nbsp;
-    
-    #<a href="https://blog.rxkiro.xyz/tags/webdev/">webdev</a>&nbsp;
-    
-    #<a href="https://blog.rxkiro.xyz/tags/react/">react</a>&nbsp;
-    
-    #<a href="https://blog.rxkiro.xyz/tags/firebase/">firebase</a>&nbsp;
-    
-  </span>
-  
-  
-
-
-  
-    <div class="table-of-contents">
-      <h2>
-        Table of Contents
-      </h2>
-      <nav id="TableOfContents">
-  <ul>
-    <li><a href="#dependencies">Dependencies</a></li>
-    <li><a href="#setting-up-firebase">Setting up Firebase</a>
-      <ul>
-        <li><a href="#add-a-new-provider-in-firebase">Add a new provider in firebase</a></li>
-        <li><a href="#folder-structure">Folder Structure</a></li>
-        <li><a href="#create-our-store">Create our store</a></li>
-      </ul>
-    </li>
-    <li><a href="#creating-our-user-slice">Creating our User Slice</a></li>
-    <li><a href="#loading-persistent-user-data-on-mount">Loading persistent user data on mount</a></li>
-  </ul>
-</nav>
-    </div>
-  
-
-  <div class="post-content"><div>
-        <p>While working on one of my projects, I had a bit of trouble trying to add persistent
-authentication with Firebase and so this is my solution. Hope it helps someone!</p>
-<h2 id="dependencies">Dependencies<a href="#dependencies" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
-<p>Make sure to already have a Firebase project created and to install npm
-packages for both <code>firebase</code> and <code>react-redux</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm install @reduxjs/toolkit react-redux firebase
-</span></span></code></pre></div><h2 id="setting-up-firebase">Setting up Firebase<a href="#setting-up-firebase" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
-<p>Before everything, make sure to set up your firebase config. I am using typescript
+<!doctype html><html lang=en><head><title>Setting Up Persistent Authentication With Firebase 9, React and Redux :: Kironto</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Learn how to set up persistent authentication in React using Firebase and Redux"><meta name=keywords content="redux,webdev,react,firebase,typescript,persistent,authentication,web development,react-redux"><meta name=robots content="noodp"><link rel=canonical href=https://blog.rxkiro.xyz/posts/setting-up-persistent-authentication-with-firebase-9-react-and-redux/><script async src="https://www.googletagmanager.com/gtag/js?id=G-X88TJR147W"></script>
+<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-X88TJR147W",{anonymize_ip:!1})}</script><link rel=stylesheet href=https://blog.rxkiro.xyz/styles.css><link rel=stylesheet href=https://blog.rxkiro.xyz/style.css><link rel="shortcut icon" href=https://blog.rxkiro.xyz/img/theme-colors/orange.png><link rel=apple-touch-icon href=https://blog.rxkiro.xyz/img/theme-colors/orange.png><meta name=twitter:card content="summary"><meta name=twitter:site content="rxkironto"><meta name=twitter:creator content="rxkironto"><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="og:title" content="Setting Up Persistent Authentication With Firebase 9, React and Redux"><meta property="og:description" content="Learn how to set up persistent authentication in React using Firebase and Redux"><meta property="og:url" content="https://blog.rxkiro.xyz/posts/setting-up-persistent-authentication-with-firebase-9-react-and-redux/"><meta property="og:site_name" content="Kironto"><meta property="og:image" content="https://blog.rxkiro.xyz/img/firebase-react-redux-typescript.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="627"><meta property="article:published_time" content="2022-12-19 20:46:55 -0800 PST"></head><body class=orange><div class="container center headings--one-size"><header class=header><div class=header__inner><div class=header__logo><a href=/><div class=logo>[kironto] $</div></a></div><ul class="menu menu--mobile"><li class=menu__trigger>Menu&nbsp;▾</li><li><ul class=menu__dropdown><li><a href=/whoami>whoami</a></li><li><a href=/posts>posts</a></li><li><a href=/contact>contact</a></li><li><a href=/categories/>categories</a></li><li><a href=/series/>series</a></li><li><a href=/tags/>tags</a></li></ul></li></ul></div><nav class=navigation-menu><ul class="navigation-menu__inner menu--desktop"><li><a href=/whoami>whoami</a></li><li><a href=/posts>posts</a></li><li><a href=/contact>contact</a></li><li><ul class=menu><li class=menu__trigger>Show more&nbsp;▾</li><li><ul class=menu__dropdown><li><a href=/categories/>categories</a></li><li><a href=/series/>series</a></li><li><a href=/tags/>tags</a></li></ul></li></ul></li></ul></nav></header><div class=content><article class=post><h1 class=post-title><a href=https://blog.rxkiro.xyz/posts/setting-up-persistent-authentication-with-firebase-9-react-and-redux/>Setting Up Persistent Authentication With Firebase 9, React and Redux</a></h1><div class=post-meta><time class=post-date>2022-12-19 ::
+[Updated :: 2022-12-19]</time>
+<span class=post-author>Amy Dang</span>
+<span class=post-reading-time>:: 5 min read (1048 words)</span></div><span class=post-tags>#<a href=https://blog.rxkiro.xyz/tags/redux/>redux</a>&nbsp;
+#<a href=https://blog.rxkiro.xyz/tags/webdev/>webdev</a>&nbsp;
+#<a href=https://blog.rxkiro.xyz/tags/react/>react</a>&nbsp;
+#<a href=https://blog.rxkiro.xyz/tags/firebase/>firebase</a>&nbsp;
+#<a href=https://blog.rxkiro.xyz/tags/typescript/>typescript</a>&nbsp;</span>
+<img src=https://blog.rxkiro.xyz/img/firebase-react-redux-typescript.jpg class=post-cover alt="Setting Up Persistent Authentication With Firebase 9, React and Redux" title="Cover Image"><div class=table-of-contents><h2>Table of Contents</h2><nav id=TableOfContents><ul><li><a href=#dependencies>Dependencies</a></li><li><a href=#setting-up-firebase>Setting up Firebase</a><ul><li><a href=#add-a-provider-in-firebase>Add a provider in firebase</a></li></ul></li><li><a href=#setting-up-redux>Setting up Redux</a><ul><li><a href=#what-our-folder-structure-will-look-like>What our folder structure will look like</a></li><li><a href=#create-our-store>Create our store</a></li><li><a href=#creating-our-user-slice>Creating our user slice</a></li></ul></li><li><a href=#loading-persistent-user-data-on-mount>Loading persistent user data on mount</a><ul><li><a href=#accessing-user-data-within-a-react-component>Accessing user data within a React component</a></li></ul></li></ul></nav></div><div class=post-content><div><p>While working on one of my projects, I had a bit of trouble trying to add persistent
+authentication with Firebase and so this is my solution. I don&rsquo;t want this guide
+to be too long, so I will not be covering how to implement Firebase sign-in and
+sign-out.</p><p>Hope it helps someone! :)</p><h2 id=dependencies>Dependencies<a href=#dependencies class=hanchor arialabel=Anchor>&#8983;</a></h2><p>Make sure to already have a React project and a Firebase project created. As
+well as to install npm packages for both <code>firebase</code> and <code>react-redux</code>.</p><p>You can install them with:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>npm install @reduxjs/toolkit react-redux firebase
+</span></span></code></pre></div><h2 id=setting-up-firebase>Setting up Firebase<a href=#setting-up-firebase class=hanchor arialabel=Anchor>&#8983;</a></h2><p>Before everything, make sure to set up your firebase config. I am using typescript,
 so this file will be called <code>firebase.ts</code>. In my project, I will be placing this
-file in an <code>utils</code> folder.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#75715e">// file: utils/firebase.ts
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">firebaseConfig</span> <span style="color:#f92672">=</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     COPY PASTE YOUR CONFIG HERE
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  */</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">apiKey</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;xxxxxxxxxxxxxxxxxxxx&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">authDomain</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;xxxxxxxxxxxxxxxxxxxx&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">projectId</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;xxxxxxxxxxxxxxxxxxxx&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">storageBucket</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;xxxxxxxxxxxxxxxxxxxx&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">messagingSenderId</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;xxxxxxxxxxxxxxxxxxxx&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">appId</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;xxxxxxxxxxxxxxxxxxxx&#34;</span>,
-</span></span><span style="display:flex;"><span>};
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">firebaseApp</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">initializeApp</span>(<span style="color:#a6e22e">firebaseConfig</span>);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">auth</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">getAuth</span>(<span style="color:#a6e22e">firebaseApp</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> { <span style="color:#a6e22e">auth</span>, <span style="color:#a6e22e">firebaseApp</span> };
-</span></span></code></pre></div><h3 id="add-a-new-provider-in-firebase">Add a new provider in firebase<a href="#add-a-new-provider-in-firebase" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
-<p>Setting up Redux
-If you have already set up Redux in your project, feel free to skip this section!
+file in a <code>utils</code> folder.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#75715e>// file: utils/firebase.ts
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>firebaseConfig</span> <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>  <span style=color:#75715e>/*
+</span></span></span><span style=display:flex><span><span style=color:#75715e>     COPY PASTE YOUR CONFIG HERE
+</span></span></span><span style=display:flex><span><span style=color:#75715e>  */</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>apiKey</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;xxxxxxxxxxxxxxxxxxxx&#34;</span>,
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>authDomain</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;xxxxxxxxxxxxxxxxxxxx&#34;</span>,
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>projectId</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;xxxxxxxxxxxxxxxxxxxx&#34;</span>,
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>storageBucket</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;xxxxxxxxxxxxxxxxxxxx&#34;</span>,
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>messagingSenderId</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;xxxxxxxxxxxxxxxxxxxx&#34;</span>,
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>appId</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;xxxxxxxxxxxxxxxxxxxx&#34;</span>,
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>firebaseApp</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>initializeApp</span>(<span style=color:#a6e22e>firebaseConfig</span>);
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>auth</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>getAuth</span>(<span style=color:#a6e22e>firebaseApp</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> { <span style=color:#a6e22e>auth</span>, <span style=color:#a6e22e>firebaseApp</span> };
+</span></span></code></pre></div><h3 id=add-a-provider-in-firebase>Add a provider in firebase<a href=#add-a-provider-in-firebase class=hanchor arialabel=Anchor>&#8983;</a></h3><p>If you haven&rsquo;t already, we will need to add a provider in Firebase in order
+to enable sign-in using email and password.</p><p>In the Firebase console, go to your
+<code>Authentication</code> dashboard and then click on the <code>Sign-in method</code> tab. From here,
+we should be able to see a <code>Add new provider</code> button.
+Click on this button and then under <code>Native Providers</code>, enable <code>email/password</code>.</p><h2 id=setting-up-redux>Setting up Redux<a href=#setting-up-redux class=hanchor arialabel=Anchor>&#8983;</a></h2><p>If you have already set up Redux in your project, feel free to skip this section!
 According to the official Redux docs, we should create slices within a folder
 called <code>features</code>. I prefer to have all my Redux related files organized within
 a single a folder. So we&rsquo;ll be adding all of our Redux related files within a
-folder called <code>store</code>.</p>
-<h3 id="folder-structure">Folder Structure<a href="#folder-structure" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
-<p>This will be how our Redux folder structure will look like.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>   src/store
-</span></span><span style="display:flex;"><span>   ├── features
-</span></span><span style="display:flex;"><span>   │ └── user
-</span></span><span style="display:flex;"><span>   │ └── userSlice.ts
-</span></span><span style="display:flex;"><span>   ├── index.ts
-</span></span><span style="display:flex;"><span>   └── reducers.ts
-</span></span></code></pre></div><h3 id="create-our-store">Create our store<a href="#create-our-store" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
-<p>In a file called <code>./store/index.ts</code> we will be setting up our redux store. Like so:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#75715e">// file: ./store/index.ts
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">configureStore</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;@reduxjs/toolkit&#34;</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">store</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">configureStore</span>({
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">reducer</span><span style="color:#f92672">:</span> () <span style="color:#f92672">=&gt;</span> ({}),
-</span></span><span style="display:flex;"><span>});
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#a6e22e">store</span>;
+folder called <code>store</code>.</p><h3 id=what-our-folder-structure-will-look-like>What our folder structure will look like<a href=#what-our-folder-structure-will-look-like class=hanchor arialabel=Anchor>&#8983;</a></h3><p>This will be how our Redux folder structure will look like.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>   src/store
+</span></span><span style=display:flex><span>   ├── features
+</span></span><span style=display:flex><span>   │ └── user
+</span></span><span style=display:flex><span>   │  └── userSlice.ts
+</span></span><span style=display:flex><span>   ├── index.ts
+</span></span><span style=display:flex><span>   └── reducers.ts
+</span></span></code></pre></div><h3 id=create-our-store>Create our store<a href=#create-our-store class=hanchor arialabel=Anchor>&#8983;</a></h3><p>In our <code>store</code> folder create a file called <code>index.ts</code>. This is where we will
+be setting up our Redux store. We name the file <code>index.ts</code> so that when we export
+our Redux store, we can easily import it to our app with
+<code>import store from './store';</code></p><p>Place this code in <code>store/index.ts</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#75715e>// file: src/store/index.ts
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>configureStore</span> } <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#34;@reduxjs/toolkit&#34;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>store</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>configureStore</span>({
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>reducer</span><span style=color:#f92672>:</span> () <span style=color:#f92672>=&gt;</span> ({}),
+</span></span><span style=display:flex><span>});
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> <span style=color:#a6e22e>store</span>;
 </span></span></code></pre></div><p>Then we will need to make sure we provide the store to our entire app.
-Within your React project, in your <code>index.ts</code> file where you render your root app,
-wrap your App component with, Provider which was imported from Redux.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#75715e">// file: src/index.ts
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">ReactDOM</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;react-dom&#34;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Provider</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;react-redux&#34;</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">App</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;./App&#34;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">store</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;./store&#34;</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ReactDOM</span>.<span style="color:#a6e22e">render</span>(
-</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">React.StrictMode</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">Provider</span> <span style="color:#a6e22e">store</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">store</span>}&gt;
-</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">App</span> /&gt;
-</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">Provider</span>&gt;
-</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">React.StrictMode</span>&gt;,
-</span></span><span style="display:flex;"><span>  document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;root&#34;</span>)
-</span></span><span style="display:flex;"><span>);
+Within our React project and in the file where you mount your root app
+(this should be in <code>src/index.ts</code>), import <code>Provider</code> from <code>react-redux</code> and
+our Redux store. Then wrap your App component with the component <code>&lt;Provider></code>.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#75715e>// file: src/index.ts
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>React</span> <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#34;react&#34;</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>ReactDOM</span> <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#34;react-dom&#34;</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>Provider</span> } <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#34;react-redux&#34;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>App</span> <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#34;./App&#34;</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>store</span> <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#34;./store&#34;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>ReactDOM</span>.<span style=color:#a6e22e>render</span>(
+</span></span><span style=display:flex><span>  &lt;<span style=color:#f92672>React.StrictMode</span>&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=color:#f92672>Provider</span> <span style=color:#a6e22e>store</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>store</span>}&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=color:#f92672>App</span> /&gt;
+</span></span><span style=display:flex><span>    &lt;/<span style=color:#f92672>Provider</span>&gt;
+</span></span><span style=display:flex><span>  &lt;/<span style=color:#f92672>React.StrictMode</span>&gt;,
+</span></span><span style=display:flex><span>  document.<span style=color:#a6e22e>getElementById</span>(<span style=color:#e6db74>&#34;root&#34;</span>)
+</span></span><span style=display:flex><span>);
 </span></span></code></pre></div><p>If you need more information on how all of this code works, you can check out
-Redux&rsquo;s official docs on getting started with Redux.</p>
-<h2 id="creating-our-user-slice">Creating our User Slice<a href="#creating-our-user-slice" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
-<p>The user slice will be responsible for all of our state logic and actions for
-users. You can find more information on slices in the official Redux docs.
+Redux&rsquo;s official docs on <a href=https://redux.js.org/introduction/getting-started>getting started with Redux</a>.</p><h3 id=creating-our-user-slice>Creating our user slice<a href=#creating-our-user-slice class=hanchor arialabel=Anchor>&#8983;</a></h3><p>The user slice will be responsible for all of our state logic and actions for
+users. You can find more information on slices in the
+<a href=https://redux.js.org/tutorials/essentials/part-2-app-structure#redux-slices>official Redux docs</a>.
 In our user slice, a user is logged out when the state is null and logged in
-when there is User data.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#75715e">// file: ./store/features/user/userSlice
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">createSlice</span>, <span style="color:#a6e22e">PayloadAction</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;@reduxjs/toolkit&#34;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">User</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;firebase/auth&#34;</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">UserState</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">user</span>: <span style="color:#66d9ef">User</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">null</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">initialState</span>: <span style="color:#66d9ef">UserState</span> <span style="color:#f92672">=</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">user</span>: <span style="color:#66d9ef">null</span>,
-</span></span><span style="display:flex;"><span>};
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">userSlice</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createSlice</span>({
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;user&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">initialState</span>: <span style="color:#66d9ef">initialState</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">reducers</span><span style="color:#f92672">:</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">logout() {</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> {
-</span></span><span style="display:flex;"><span>        ...<span style="color:#a6e22e">initialState</span>,
-</span></span><span style="display:flex;"><span>      };
-</span></span><span style="display:flex;"><span>    },
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">login</span>(<span style="color:#a6e22e">state</span>: <span style="color:#66d9ef">UserState</span>, <span style="color:#a6e22e">action</span>: <span style="color:#66d9ef">PayloadAction</span>&lt;<span style="color:#f92672">User</span>&gt;) {
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">user</span>: <span style="color:#66d9ef">action.payload</span>,
-</span></span><span style="display:flex;"><span>      };
-</span></span><span style="display:flex;"><span>    },
-</span></span><span style="display:flex;"><span>  },
-</span></span><span style="display:flex;"><span>});
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// selectors
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">selectUser</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">state</span>: <span style="color:#66d9ef">UserState</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">user</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// actions
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">startLoading</span>, <span style="color:#a6e22e">stopLoading</span>, <span style="color:#a6e22e">login</span>, <span style="color:#a6e22e">logout</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">userSlice</span>.<span style="color:#a6e22e">actions</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#a6e22e">userSlice</span>.<span style="color:#a6e22e">reducer</span>;
-</span></span></code></pre></div><p>After this we will add our user slice to our list of reducers. I like to create
-a separate file for this so that the <code>store/index.ts</code> file is a bit cleaner.
-So here we will create a new file called <code>./store/reducers.ts</code> and add the
-following code:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#75715e">// file: ./store/reducers.ts
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">combineReducers</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;redux&#34;</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">userReducer</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;./features/user/userSlice&#34;</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">rootReducer</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">combineReducers</span>({
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">user</span>: <span style="color:#66d9ef">userReducer</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// OTHER REDUCERS HERE
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>});
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#a6e22e">rootReducer</span>;
-</span></span></code></pre></div><p>With the reducers file in place, you can now import your other reducers and
-combine them here. You also need to make sure the store knows about these
-reducers. So we will also update <code>./store/index.ts</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#75715e">// file: ./store/index.ts
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">configureStore</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;@reduxjs/toolkit&#34;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">rootReducer</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;./reducers&#34;</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">store</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">configureStore</span>({
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// NEW CODE
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">reducer</span>: <span style="color:#66d9ef">rootReducer</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// NEW CODE
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>});
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#a6e22e">store</span>;
-</span></span></code></pre></div><h2 id="loading-persistent-user-data-on-mount">Loading persistent user data on mount<a href="#loading-persistent-user-data-on-mount" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
-<p>Ok! We&rsquo;ve finally gotten redux and firebase up and running. Now to make user
-login persistent!</p>
-<p><code>onAuthStateChange</code> is a subscription therefore we need to make sure we clean it
-up when the component unmounts.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">useEffect</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">useDispatch</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;react-redux&#34;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">login</span>, <span style="color:#a6e22e">logout</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;./store/features/user/userSlice&#34;</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">App() {</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dispatch</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">useDispatch</span>();
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">useEffect</span>(() <span style="color:#f92672">=&gt;</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">unsubscribe</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">onAuthStateChanged</span>(<span style="color:#a6e22e">auth</span>, (<span style="color:#a6e22e">userAuth</span>) <span style="color:#f92672">=&gt;</span> {
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">userAuth</span>) {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">dispatch</span>(<span style="color:#a6e22e">login</span>(<span style="color:#a6e22e">userAuth</span>));
-</span></span><span style="display:flex;"><span>      } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">dispatch</span>(<span style="color:#a6e22e">logout</span>());
-</span></span><span style="display:flex;"><span>      }
-</span></span><span style="display:flex;"><span>    });
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> () <span style="color:#f92672">=&gt;</span> {
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">unsubscribe</span>();
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">dispatch</span>(<span style="color:#a6e22e">logout</span>());
-</span></span><span style="display:flex;"><span>    };
-</span></span><span style="display:flex;"><span>  }, []);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">return</span> (
-</span></span><span style="display:flex;"><span>     <span style="color:#75715e">// ...
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     <span style="color:#75715e">// component logic here
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     <span style="color:#75715e">// ...
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   );
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Accessing user data within a React component</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">selectUser</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;userSlice&#34;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">useSelector</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;react-redux&#34;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#66d9ef">type</span> { <span style="color:#a6e22e">User</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;firebase/auth&#34;</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">myComponent() {</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span>: <span style="color:#66d9ef">User</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">useSelector</span>(<span style="color:#a6e22e">selectUser</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// ...
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// component logic here
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// ...
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
-</span></span></code></pre></div>
-      </div></div>
-
-  
-  
-<div class="pagination">
-    <div class="pagination__title">
-        <span class="pagination__title-h">Read other posts</span>
-        <hr />
-    </div>
-    <div class="pagination__buttons">
-        
-        
-        <span class="button next">
-            <a href="https://blog.rxkiro.xyz/posts/audio-splitting-in-linux/">
-                <span class="button__text">Audio Splitting in Linux</span>
-                <span class="button__icon">→</span>
-            </a>
-        </span>
-        
-    </div>
-</div>
-
-  
-
-  
-  
-
-  
-</div>
-
-  </div>
-
-  
-    <footer class="footer">
-  <div class="footer__inner">
-    
-      <div class="copyright">
-        <span>© 2022 Powered by <a href="http://gohugo.io">Hugo</a></span>
-    
-        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
-      </div>
-  </div>
-</footer>
-
-<script src="https://blog.rxkiro.xyz/assets/main.js"></script>
-<script src="https://blog.rxkiro.xyz/assets/prism.js"></script>
-
-
-
-
-
-
-
-  
-</div>
-
-</body>
-</html>
+when there is User data.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#75715e>// file: ./store/features/user/userSlice
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>createSlice</span>, <span style=color:#a6e22e>PayloadAction</span> } <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#34;@reduxjs/toolkit&#34;</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>User</span> } <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#34;firebase/auth&#34;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>interface</span> <span style=color:#a6e22e>UserState</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>user</span>: <span style=color:#66d9ef>User</span> <span style=color:#f92672>|</span> <span style=color:#66d9ef>null</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>initialState</span>: <span style=color:#66d9ef>UserState</span> <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>user</span>: <span style=color:#66d9ef>null</span>,
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>userSlice</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createSlice</span>({
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>name</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;user&#34;</span>,
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>initialState</span>: <span style=color:#66d9ef>initialState</span>,
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>reducers</span><span style=color:#f92672>:</span> {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>logout() {</span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>return</span> {
+</span></span><span style=display:flex><span>        ...<span style=color:#a6e22e>initialState</span>,
+</span></span><span style=display:flex><span>      };
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>login</span>(<span style=color:#a6e22e>state</span>: <span style=color:#66d9ef>UserState</span>, <span style=color:#a6e22e>action</span>: <span style=color:#66d9ef>PayloadAction</span>&lt;<span style=color:#f92672>User</span>&gt;) {
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>return</span> {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>user</span>: <span style=color:#66d9ef>action.payload</span>,
+</span></span><span style=display:flex><span>      };
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>});
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// selectors
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>selectUser</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>state</span>: <span style=color:#66d9ef>UserState</span>) <span style=color:#f92672>=&gt;</span> <span style=color:#a6e22e>state</span>.<span style=color:#a6e22e>user</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// actions
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>const</span> { <span style=color:#a6e22e>startLoading</span>, <span style=color:#a6e22e>stopLoading</span>, <span style=color:#a6e22e>login</span>, <span style=color:#a6e22e>logout</span> } <span style=color:#f92672>=</span> <span style=color:#a6e22e>userSlice</span>.<span style=color:#a6e22e>actions</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> <span style=color:#a6e22e>userSlice</span>.<span style=color:#a6e22e>reducer</span>;
+</span></span></code></pre></div><p>With the reducers file in place, we can now add our user reducer to our list of
+reducers.
+I like to create a separate file for this so that the <code>store/index.ts</code> file is
+a bit cleaner. So we will create a new file called <code>reducers.ts</code> in the <code>store</code>
+folder to hold all of our reducers. And to combine our reducers, we will use a
+built-in Redux method called <code>combineReducers</code>.</p><p>Here&rsquo;s what this code will look like:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#75715e>// file: ./store/reducers.ts
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>combineReducers</span> } <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#34;redux&#34;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>userReducer</span> <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#34;./features/user/userSlice&#34;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>rootReducer</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>combineReducers</span>({
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>user</span>: <span style=color:#66d9ef>userReducer</span>,
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// OTHER REDUCERS HERE
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>});
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> <span style=color:#a6e22e>rootReducer</span>;
+</span></span></code></pre></div><p>You also need to make sure the store knows about these
+reducers. So we will also update <code>./store/index.ts</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#75715e>// file: ./store/index.ts
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>configureStore</span> } <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#34;@reduxjs/toolkit&#34;</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>rootReducer</span> <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#34;./reducers&#34;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>store</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>configureStore</span>({
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// NEW CODE
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>reducer</span>: <span style=color:#66d9ef>rootReducer</span>,
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// NEW CODE
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>});
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> <span style=color:#a6e22e>store</span>;
+</span></span></code></pre></div><h2 id=loading-persistent-user-data-on-mount>Loading persistent user data on mount<a href=#loading-persistent-user-data-on-mount class=hanchor arialabel=Anchor>&#8983;</a></h2><p>Ok! We&rsquo;ve finally gotten redux and firebase up and running. Now to make user
+login persistent.</p><p>In order to watch for changes in our Firebase authentication state, we will
+need to use the method <code>onAuthStateChange</code>. It is a <code>observer</code> that watches for
+changes in our Firebase authentication state. And since it&rsquo;s an observer, we
+will also need to make sure we clean it up by unsubscribing to the observer
+when the component unmounts.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>useEffect</span> } <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#34;react&#34;</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>useDispatch</span> } <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#34;react-redux&#34;</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>login</span>, <span style=color:#a6e22e>logout</span> } <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#34;./store/features/user/userSlice&#34;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>App() {</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>dispatch</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>useDispatch</span>();
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>useEffect</span>(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>unsubscribe</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>onAuthStateChanged</span>(<span style=color:#a6e22e>auth</span>, (<span style=color:#a6e22e>userAuth</span>) <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>userAuth</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>dispatch</span>(<span style=color:#a6e22e>login</span>(<span style=color:#a6e22e>userAuth</span>));
+</span></span><span style=display:flex><span>      } <span style=color:#66d9ef>else</span> {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>dispatch</span>(<span style=color:#a6e22e>logout</span>());
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    });
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> () <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>unsubscribe</span>();
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>dispatch</span>(<span style=color:#a6e22e>logout</span>());
+</span></span><span style=display:flex><span>    };
+</span></span><span style=display:flex><span>  }, []);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>   <span style=color:#66d9ef>return</span> (
+</span></span><span style=display:flex><span>     <span style=color:#75715e>// ...
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>     <span style=color:#75715e>// component logic here
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>     <span style=color:#75715e>// ...
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>   );
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h3 id=accessing-user-data-within-a-react-component>Accessing user data within a React component<a href=#accessing-user-data-within-a-react-component class=hanchor arialabel=Anchor>&#8983;</a></h3><p>In order to access our user&rsquo;s data and login status, we need to import
+<code>selectUser</code> which we&rsquo;ve already implemented in our <code>userSlice.ts</code> file.
+Combined with <code>useSelector</code>, we will be able to grab the data from within our
+Redux store.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>selectUser</span> } <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#34;./store/features/user/userSlice&#34;</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>useSelector</span> } <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#34;react-redux&#34;</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>import</span> <span style=color:#66d9ef>type</span> { <span style=color:#a6e22e>User</span> } <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#34;firebase/auth&#34;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>myComponent() {</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>user</span>: <span style=color:#66d9ef>User</span> <span style=color:#f92672>|</span> <span style=color:#66d9ef>null</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>useSelector</span>(<span style=color:#a6e22e>selectUser</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// ...
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>// component logic here
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>// ...
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>}
+</span></span></code></pre></div><p>Annnnd we are done. Let me know if there are any mistakes :D</p></div></div><div class=pagination><div class=pagination__title><span class=pagination__title-h>Read other posts</span><hr></div><div class=pagination__buttons><span class="button previous"><a href=https://blog.rxkiro.xyz/posts/behold-comments/><span class=button__icon>←</span>
+<span class=button__text>Behold... Comments</span></a></span>
+<span class="button next"><a href=https://blog.rxkiro.xyz/posts/audio-splitting-in-linux/><span class=button__text>Audio Splitting in Linux</span>
+<span class=button__icon>→</span></a></span></div></div><script type=text/javascript src=https://latest.cactus.chat/cactus.js></script><div id=cactus-comments></div><script>initComments({node:document.getElementById("cactus-comments"),defaultHomeserverUrl:"https://matrix.cactus.chat:8448",serverName:"cactus.chat",siteName:"blog.rxkiro.xyz",commentSectionId:"7d532b39f29242c0003399184b101bca"});const cactusComment=document.getElementsByClassName("cactus-editor-textarea")[0];cactusComment.rows=7</script></article></div><footer class=footer><div class=footer__inner><div class=copyright><span>© 2022 Powered by <a href=http://gohugo.io>Hugo</a></span>
+<span>:: Theme made by <a href=https://twitter.com/panr>panr</a></span></div></div></footer><script type=text/javascript src=/bundle.min.js></script></div></body></html>
