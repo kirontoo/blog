@@ -2,7 +2,7 @@
 title = "Behold... Comments"
 date = "2022-12-21T20:04:15-08:00"
 author = "Amy Dang"
-authorTwitter = "" #do not include @
+authorTwitter = "rxkironto" #do not include @
 cover = "img/cactus500.png"
 tags = ["blog", "comments"]
 keywords = ["cactus", "comment", "comments", "cactus comments"]
