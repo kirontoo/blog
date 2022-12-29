@@ -4,6 +4,7 @@
   --bg-accent: hsla(24, 20%, 50%, 0.4);
   --accent: #ffa86a;
   --background: #222129;
+  --outline: rgba(255,255,255,0.1);
 }
 
 body {
@@ -108,7 +109,6 @@ a.cactus-button {
   flex-direction: column;
 }
 
-
 .cactus-login-credentials-button {
   align-self: flex-end;
 }
@@ -170,4 +170,18 @@ div.cactus-comment-content > div.cactus-comment-body > div > div > blockquote {
 div.cactus-editor-buttons {
   display: flex;
   gap: 0.5rem;
+}
+
+.menu--desktop > li > a::before {
+  /* content: "./"; */
+  /* background-color: var(--background); */
+  /* width: fit-content; */
+  /* color: var(--outline); */
+}
+
+.menu--desktop {
+}
+
+.menu--desktop > li > a {
+  color: var(--accent);
 }
