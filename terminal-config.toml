@@ -82,13 +82,13 @@ enableRobotsTXT = true
 [languages]
   [languages.en]
     title = "Kironto"
-    subtitle = "kiront's blog"
-    keywords = "blog, kironto, amy dang, dev, webdev, linux, react, svelte, typescript, javascript, web development, neovim"
+    subtitle = "kironto's blog"
+    keywords = "blog, kironto, amy dang, dev, webdev, linux, react, svelte, typescript, javascript, web development, neovim, rxkiro, kironto, rxkio.xyz, kirontoo, dang, amy"
     menuMore = "Show more"
     readMore = "Read more"
     readOtherPosts = "Read other posts"
     missingContentMessage = "I think you're lost."
-    missingBackButtonLabel = "Back to home page"
+    missingBackButtonLabel = "Go Home."
 
     [languages.en.params.logo]
       logoText = "[kironto] $"
